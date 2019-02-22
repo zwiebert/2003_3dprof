@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="WinIO-Sys"
+	ProjectGUID="{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}"
+	Keyword="MakeFileProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="build.bat Debug d:\dev\winddk &quot;$(TargetDir)&quot;"
+				ReBuildCommandLine="build.bat Debug d:\dev\winddk &quot;$(TargetDir)&quot;"
+				CleanCommandLine="Clean.bat Debug"
+				Output="i386\WinIO.Sys"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="build.bat Release d:\dev\winddk &quot;$(TargetDir)&quot;"
+				ReBuildCommandLine="build.bat Release d:\dev\winddk &quot;$(TargetDir)&quot;"
+				CleanCommandLine="Clean.bat Release"
+				Output="i386\WinIO.Sys"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
+			<File
+				RelativePath="WinIo.c">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc">
+			<File
+				RelativePath="WinIo_NT.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="building"
+			Filter="">
+			<File
+				RelativePath="Clean.bat">
+			</File>
+			<File
+				RelativePath="MAKEFILE">
+			</File>
+			<File
+				RelativePath="SOURCES">
+			</File>
+			<File
+				RelativePath="OBJ\_OBJECTS.MAC">
+			</File>
+			<File
+				RelativePath="build.bat">
+			</File>
+			<File
+				RelativePath="..\copy_output.bat">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

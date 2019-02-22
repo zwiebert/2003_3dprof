@@ -1,0 +1,18 @@
+LIBRARY WINIO
+
+EXPORTS
+
+InitializeWinIo
+ShutdownWinIo
+MapPhysToLin
+UnmapPhysicalMemory
+GetPhysLong
+SetPhysLong
+GetPortVal
+SetPortVal
+InstallWinIoDriver
+RemoveWinIoDriver
+MapIO
+UnMapIO
+winio_get_pci_header
+

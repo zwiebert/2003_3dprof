@@ -1,0 +1,29 @@
+dd.DeviceName="\\.\DISPLAY1"
+dd.DeviceString="RADEON 9500 PRO / 9700"
+dd.DeviceKey="\Registry\Machine\System\CurrentControlSet\Control\Video\{71C02D22-ACC7-433F-A854-C55CDD160B9E}\0000"
+dd.DeviceID="PCI\VEN_1002&DEV_4E45&SUBSYS_00021002&REV_00"
+dd.StateFlags="08000005"
+
+-----------------------------------------------------------
+
+dd.DeviceName="\\.\DISPLAY2"
+dd.DeviceString="RADEON 9500 PRO / 9700 - Secondary"
+dd.DeviceKey="\Registry\Machine\System\CurrentControlSet\Control\Video\{661D9766-8EC9-48E8-AD15-676FF16AB2C5}\0000"
+dd.DeviceID="PCI\VEN_1002&DEV_4E65&SUBSYS_00031002&REV_00"
+dd.StateFlags="00000000"
+
+-----------------------------------------------------------
+
+dd.DeviceName="\\.\DISPLAYV1"
+dd.DeviceString="NetMeeting driver"
+dd.DeviceKey="\Registry\Machine\System\CurrentControlSet\Control\Video\{8B6D7859-A639-4A15-8790-7161976D057A}\0000"
+dd.DeviceID=""
+dd.StateFlags="00000008"
+
+-----------------------------------------------------------
+
+dd.DeviceName="\\.\DISPLAYV2"
+dd.DeviceString="RDPDD Chained DD"
+dd.DeviceKey="\Registry\Machine\System\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000"
+dd.DeviceID=""
+dd.StateFlags="00000008"

@@ -1,0 +1,28 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReplaceIcon", "ReplaceIcon.vcproj", "{2D3C3DF1-CF91-4CFF-85CD-3729FD57E26D}"
+EndProject
+Global
+	GlobalSection(DevPartner Solution Properties) = postSolution
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Debug-exe
+		ConfigName.2 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{2D3C3DF1-CF91-4CFF-85CD-3729FD57E26D}.Debug.ActiveCfg = Debug|Win32
+		{2D3C3DF1-CF91-4CFF-85CD-3729FD57E26D}.Debug.Build.0 = Debug|Win32
+		{2D3C3DF1-CF91-4CFF-85CD-3729FD57E26D}.Debug-exe.ActiveCfg = Debug-exe|Win32
+		{2D3C3DF1-CF91-4CFF-85CD-3729FD57E26D}.Debug-exe.Build.0 = Debug-exe|Win32
+		{2D3C3DF1-CF91-4CFF-85CD-3729FD57E26D}.Release.ActiveCfg = Release|Win32
+		{2D3C3DF1-CF91-4CFF-85CD-3729FD57E26D}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuImage", "MenuImage.csproj", "{802E663D-50DB-414B-87EC-EF0671DE3379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuImageLib", "..\MenuImageLib\MenuImageLib.csproj", "{85739E8F-0814-4778-BD9F-4784A0685F90}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{802E663D-50DB-414B-87EC-EF0671DE3379}.Debug.ActiveCfg = Debug|.NET
+		{802E663D-50DB-414B-87EC-EF0671DE3379}.Debug.Build.0 = Debug|.NET
+		{802E663D-50DB-414B-87EC-EF0671DE3379}.Release.ActiveCfg = Release|.NET
+		{802E663D-50DB-414B-87EC-EF0671DE3379}.Release.Build.0 = Release|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug.ActiveCfg = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug.Build.0 = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Release.ActiveCfg = Release|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

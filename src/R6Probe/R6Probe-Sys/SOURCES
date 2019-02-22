@@ -1,0 +1,13 @@
+TARGETNAME=R6Probe
+TARGETPATH=.
+TARGETTYPE=DRIVER
+NTDEBUG=
+NTDBGFILES=
+NTDEBUGTYPE=windbg
+BINPLACE_FLAGS=
+USER_INCLUDES=..\include;..\include\NT
+LINKER_FLAGS=/MAP /mapinfo:lines /debug:FULL /DEBUGTYPE:CV /PDBTYPE:CON
+
+
+
+SOURCES=main.asm ioctl.asm r6probe.rc test.c

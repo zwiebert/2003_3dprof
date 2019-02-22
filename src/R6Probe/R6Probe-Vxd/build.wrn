@@ -1,0 +1,102 @@
+macroloop(33) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(312) : warning Include File
+macroloop(33) : warning iteration 2: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(312) : warning Include File
+macroloop(33) : warning iteration 3: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(312) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(314) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(315) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(316) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(317) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(318) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(319) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(320) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(321) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(322) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(323) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(324) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(325) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(326) : warning Include File
+i386\main.asm(58) : warning A4004: cannot ASSUME CS
+vxd_locked_code_seg(3) : warning Macro Called From
+i386\main.asm(58) : warning Main Line Code
+macroloop(33) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(312) : warning Include File
+macroloop(33) : warning iteration 2: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(312) : warning Include File
+macroloop(33) : warning iteration 3: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(312) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(314) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(315) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(316) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(317) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(318) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(319) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(320) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(321) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(322) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(323) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(324) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(325) : warning Include File
+macroloop(35) : warning iteration 1: Macro Called From 
+makecodeseg(41) : warning Macro Called From
+d:\dev\98ddk\inc\win98\vmm.inc(326) : warning Include File
+i386\ioctl.asm(59) : warning A4004: cannot ASSUME CS
+vxd_locked_code_seg(3) : warning Macro Called From
+i386\ioctl.asm(59) : warning Main Line Code

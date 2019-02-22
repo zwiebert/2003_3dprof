@@ -1,0 +1,85 @@
+<Project name="TDProf" description="" newfilesearch="None" enableviewstate="True" version="1.1" projecttype="C#" xmlns:convtool="urn:convtool">
+  <Contents>
+    <File name=".\AppConfig.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\AppLocale.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\AppMain.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\AssemblyInfo.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\AutoRestore.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\CheckSum.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\Clocking.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\ConfigRecord.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\DevScreenShots.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\DisplayInfo.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\FormCommands.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\FormImageChooser.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\FormMain.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\FormSettings.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\FormSpecFileEdit.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\GameProfiles.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\MessageForm.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\PrePostCommands.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\RegDiff.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\RegDiffForm.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\ShellLink.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\SpecFile.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\Utils.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\ShellLink\ShellLinkNative.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\ShellLink\ShellShortcut.cs" buildaction="Compile" subtype="Code" />
+    <File name=".\\TDProf.App.ico" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\AppLocale.de.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\AppLocale.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\AppMain.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormCommands.de.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormCommands.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormImageChooser.de.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormImageChooser.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormMain.de.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormMain.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormSettings.de.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormSettings.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormSpecFileEdit.de.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\FormSpecFileEdit.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\MessageForm.resources" buildaction="EmbedAsResource" subtype="Code" />
+    <File name=".\RegDiffForm.resources" buildaction="EmbedAsResource" subtype="Code" />
+  </Contents>
+  <DeploymentInformation target="" script="" strategy="File" />
+  <Configurations active="Debug">
+    <Configuration runwithwarnings="False" name="Debug">
+      <CodeGeneration runtime="MsNet" compiler="Csc" warninglevel="4" includedebuginformation="True" optimize="False" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" target="WinExe" definesymbols="DEBUG;TRACE" generatexmldocumentation="False" win32Icon=".\App.ico" />
+      <Execution commandlineparameters="" consolepause="True" />
+      <Output directory=".\bin\Debug\" assembly="tdprof" />
+    </Configuration>
+    <Configuration runwithwarnings="False" name="Release">
+      <CodeGeneration runtime="MsNet" compiler="Csc" warninglevel="4" includedebuginformation="False" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" target="WinExe" definesymbols="TRACE" generatexmldocumentation="False" win32Icon=".\App.ico" />
+      <Execution commandlineparameters="" consolepause="True" />
+      <Output directory=".\bin\Release\" assembly="tdprof" />
+    </Configuration>
+    <Configuration runwithwarnings="False" name="Remote Win98 Debug">
+      <CodeGeneration runtime="MsNet" compiler="Csc" warninglevel="4" includedebuginformation="True" optimize="False" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" target="WinExe" definesymbols="DEBUG;TRACE" generatexmldocumentation="False" win32Icon=".\App.ico" />
+      <Execution commandlineparameters="" consolepause="True" />
+      <Output directory=".\bin\Debug\" assembly="tdprof" />
+    </Configuration>
+    <Configuration runwithwarnings="False" name="Debug -run Option">
+      <CodeGeneration runtime="MsNet" compiler="Csc" warninglevel="4" includedebuginformation="True" optimize="False" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" target="WinExe" definesymbols="DEBUG;TRACE" generatexmldocumentation="False" win32Icon=".\App.ico" />
+      <Execution commandlineparameters="" consolepause="True" />
+      <Output directory=".\bin\Debug\" assembly="tdprof" />
+    </Configuration>
+    <Configuration runwithwarnings="False" name="Release_Debug">
+      <CodeGeneration runtime="MsNet" compiler="Csc" warninglevel="4" includedebuginformation="True" optimize="False" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" target="WinExe" definesymbols="DEBUG;TRACE" generatexmldocumentation="False" win32Icon=".\App.ico" />
+      <Execution commandlineparameters="" consolepause="True" />
+      <Output directory=".\bin\Release\Debug\" assembly="tdprof" />
+    </Configuration>
+    <Configuration runwithwarnings="False" name="Debug_specfile_option">
+      <CodeGeneration runtime="MsNet" compiler="Csc" warninglevel="4" includedebuginformation="True" optimize="False" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" target="WinExe" definesymbols="DEBUG;TRACE" generatexmldocumentation="False" win32Icon=".\App.ico" />
+      <Execution commandlineparameters="" consolepause="True" />
+      <Output directory=".\bin\Debug\" assembly="tdprof" />
+    </Configuration>
+    <Configuration runwithwarnings="False" name="Debug -device_key">
+      <CodeGeneration runtime="MsNet" compiler="Csc" warninglevel="4" includedebuginformation="True" optimize="False" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" target="WinExe" definesymbols="DEBUG;TRACE" generatexmldocumentation="False" win32Icon=".\App.ico" />
+      <Execution commandlineparameters="" consolepause="True" />
+      <Output directory=".\bin\Debug\" assembly="tdprof" />
+    </Configuration>
+  </Configurations>
+  <References>
+  </References>
+</Project>

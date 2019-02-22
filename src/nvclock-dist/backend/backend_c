@@ -1,0 +1,428 @@
+/* NVClock 0.7 - Linux overclocker for NVIDIA cards
+ * 
+ * Copyright(C) 2001-2003 Roderick Colenbrander
+ *
+ * site: http://nvclock.sourceforge.net
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+ */
+
+#include <sys/mman.h> 
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/ioctl.h>
+#include <errno.h>
+
+#include "nvclock.h"
+#include "backend.h"
+
+struct card_list card[MAX_CARDS];
+Card nv_card;
+
+int IsVideoCard(short dev, short bus, short fn);
+
+void set_default_speeds(int num);
+int map_mem(const char* dev_name);
+void unmap_mem();
+void *map_dev_mem (int fd, unsigned long Base, unsigned long Size);
+void unmap_dev_mem (unsigned long Base, unsigned long Size);
+
+
+/* Check if we are using the closed source Nvidia drivers */
+int check_driver()
+{
+    FILE *proc;
+    char buffer[80];
+    int temp;
+    
+    proc = fopen("/proc/modules", "r");
+    
+    if(proc != NULL) 
+    {
+        while(fgets(buffer, 80, proc) != NULL)
+	{	
+	    if((strstr(buffer, "NVdriver") != 0))
+	    {
+		fclose(proc);
+		return 1;
+	    }
+
+	    /* Needed for driver version 1.0-4xxx */
+	    if((strstr(buffer, "nvidia") != 0))
+	    {
+		fclose(proc);
+		return 2;
+	    }
+	}	
+    }
+    fclose(proc);
+
+    return 0;
+}
+
+/*  Detect all nVidia cards using ioctl's or using /proc when the 
+    closed source nVidia drivers aren't installed/loaded.
+
+    Return codes:
+    >=   0 nvclock found 1 or more nvidia videocards
+        -1 nvclock couldn't find any nvidia cards
+	-2 the NVdriver isn't loaded and the user isn't root.
+	Only root users can have access to the card in this case since we
+        we need access to /dev/mem. 
+*/
+int FindAllCards()
+{
+    int nv_driver = check_driver();
+
+
+    /* Check if the nvidia drivers are loaded or if the user is root */
+    if(nv_driver || (getuid() == 0 && geteuid() == 0))
+    {
+	int dev, dum, reg_addr, i = -1;
+        unsigned short devbusfn;
+	char buf[256];
+        FILE *proc;
+
+	proc = fopen("/proc/bus/pci/devices", "r");
+        if (!proc) 
+	{
+	    error(ERROR, "Couldn't open /proc/bus/pci/devices to detect your videocard.");
+	    return; /* The client already exited, so this is enough */
+	}
+
+
+	while (fgets(buf, sizeof(buf)-1, proc)) 
+        {
+	    if (sscanf(buf,"%hx %x %x %x",&devbusfn, &dev, &dum, &reg_addr) != 4) continue;
+
+	    /* Check if the card contains an Nvidia chipset */	
+	    if( (dev>>16) == 0x10de)
+            {
+		/*
+	        When we enter this block of code we know that the device contains some 
+	        chip designed by Nvidia. In the past Nvidia only produced videochips but
+	        now they also make various other devices. Because of this we need to find
+	        out if the device is a videocard or not. There are two ways to do this. We can
+	        create a list of all Nvidia videochips or we can check the pci header of the device.
+	        We will read the pci header from /proc/bus/pci/(bus)/(function).(device). When
+	        the card is in our card database we report the name of the card and else we say
+	        it is an unknown card.
+		*/
+
+		if(!IsVideoCard(devbusfn >> 8, (devbusfn & 0xff) >> 3, (devbusfn & 0xff) & 0x7))
+		    continue;
+	
+		i++;
+		card[i].device_id = (0x0000ffff & dev);
+		card[i].number = i;
+		card[i].card_name = (char*)get_card_name(card[i].device_id, &card[i].gpu);
+		card[i].bus_id = (char*)malloc(8 * sizeof(char));
+		sprintf(card[i].bus_id, "%02d:%02d.%d", devbusfn >> 8, (devbusfn & 0xff) >> 3, (devbusfn & 0xff) & 0x7);
+
+		/*
+	        Thanks to all different driver version this is needed now.
+	        When nv_driver > 1 the nvidia kernel module is loaded. 
+	        For driver versions < 1.0-40xx the register offset could be set to 0.
+	        Thanks to a rewritten kernel module in 1.0-40xx the register offset needs
+	        to be set again to the real offset. 
+		*/
+		switch(nv_driver)
+		{
+	    	    case 0:
+			card[i].dev_name = strdup("/dev/mem");
+    			card[i].reg_address = reg_addr;
+			break;
+		    case 1:
+			card[i].dev_name = calloc(13, sizeof(char));
+			sprintf(card[i].dev_name, "/dev/nvidia%d", card[i].number);
+			card[i].reg_address = 0;
+			break;
+		    case 2:
+			card[i].dev_name = calloc(13, sizeof(char));
+			sprintf(card[i].dev_name, "/dev/nvidia%d", card[i].number);
+    			card[i].reg_address = reg_addr;
+			break;	    		    
+		}
+    	    }
+	}
+
+	fclose(proc);
+
+	/* new function that writes/reads the defaults speeds from a file */
+	set_default_speeds(i);
+
+	return i;
+    }
+    else
+    {
+        return -2;
+    }
+}
+
+/* Set the card object to the requested card */
+void set_card(int number)
+{
+    /* Some simple check to see if we are using nv_card for the first time or not */
+    if(nv_card.device_id != 0)
+    {
+	unmap_mem();
+    }
+
+    nv_card.card_name = card[number].card_name;
+    nv_card.device_id = card[number].device_id;
+    nv_card.bus_id = strdup(card[number].bus_id);
+    nv_card.reg_address = card[number].reg_address;
+    nv_card.gpu = card[number].gpu;
+
+    if(map_mem(card[number].dev_name) == -1)
+	return; /* the client will take care of the rest using error ... */
+
+    /* Set the speed range */
+    set_speed_range();
+
+    /* Set the default pll's */
+    nv_card.mpll = card[number].mpll;
+    nv_card.nvpll = card[number].nvpll;
+
+    /* Find out what memory is being used */
+    nv_card.mem_type = (nv_card.PFB[0x200/4] & 0x01) ? DDR : SDR;
+
+    nv_card.get_bus_type = get_bus_type;
+
+    if(strcmp(nv_card.get_bus_type(), "AGP") == 0)
+    {
+	nv_card.get_agp_rate = get_agp_rate;
+	nv_card.get_agp_status = get_agp_status;
+	nv_card.get_fw_status = get_fw_status;
+	nv_card.get_sba_status = get_sba_status;
+	nv_card.get_supported_agp_rates = get_supported_agp_rates;
+    }
+    else
+    {
+	nv_card.get_agp_rate = get_agp_rate;
+	nv_card.get_agp_status = dummy_str;
+	nv_card.get_fw_status = dummy_str;
+	nv_card.get_sba_status = dummy_str;
+	nv_card.get_supported_agp_rates = dummy_str;
+    }
+    
+    
+    nv_card.get_memory_size = get_memory_size;
+    nv_card.get_memory_type = get_memory_type;
+    nv_card.get_memory_width = get_memory_width;
+
+    /* Depending on the gpu type, we provide some functions */
+    /* We do this since we don't want overclocking on all types of cards */
+    switch(card[number].gpu)
+    {
+	case NORMAL:
+	    /* Use different clocking functions for nv30 based cards */
+	    if(((nv_card.device_id & 0xf00) == 0x300) && (nv_card.device_id != 0x322))
+	    {
+		error(INFO, "Overclocking of GeforceFX hardware is not supported at the moment");
+    	        nv_card.get_gpu_speed = get_nv30_gpu_speed;
+	        nv_card.get_memory_speed = get_nv30_memory_speed;
+	        nv_card.set_memory_speed = set_nv30_memory_speed;
+	        nv_card.set_gpu_speed = set_nv30_gpu_speed;
+	        nv_card.reset_speeds = reset_speeds;
+	    }
+	    else
+	    {
+    		nv_card.get_gpu_speed = get_gpu_speed;
+	    	nv_card.set_gpu_speed = set_gpu_speed;
+		nv_card.get_memory_speed = get_memory_speed;
+		nv_card.set_memory_speed = set_memory_speed;
+	        nv_card.reset_speeds = reset_speeds;
+	    }
+	    break;
+
+	case NFORCE:
+	    error(INFO, "Memory Overclocking isn't supported on Nforce cards");
+    	    nv_card.get_gpu_speed = get_gpu_speed;
+	    nv_card.set_gpu_speed = set_gpu_speed;
+	    nv_card.get_memory_speed = get_nforce_memory_speed;
+	    nv_card.set_memory_speed = dummy;
+	    nv_card.reset_speeds = reset_speeds;
+	    break;
+
+	case MOBILE:
+	    error(INFO, "Overclocking isn't supported on mobile GPUs");
+    	    nv_card.get_gpu_speed = get_gpu_speed;
+	    nv_card.set_gpu_speed = dummy;
+	    nv_card.get_memory_speed = get_memory_speed;
+	    nv_card.set_memory_speed = dummy;
+	    nv_card.reset_speeds = dummy;
+	    break;
+    }
+}
+
+/*
+    Some new hacky function to add a way to restore
+    the card to its default speeds. Since bios parsing
+    is way too complicated, we fall back to a sort of
+    config file that will hold the speeds till the user
+    reboots.
+*/
+void set_default_speeds(int num)
+{
+    int i, eof;
+    char buffer[100];
+    volatile unsigned int *PEXTDEV;
+    volatile unsigned int *PRAMDAC;
+    FILE *fp;
+
+    if((fp = fopen("/tmp/nvclock", "r")) != NULL)
+    {
+	/* Read the file .. */
+        for(eof = fscanf(fp, "%s",&buffer); eof != EOF; eof = fscanf(fp, "%s", &buffer))
+	{
+	    if( strstr(buffer, "card=") != 0)
+	    {
+		int number, mpll, nvpll;
+		sscanf(buffer, "card=%x", &number);
+	    
+		fscanf(fp, "%s", &buffer);
+		sscanf(buffer, "mpll=%x", &mpll);
+		card[number].mpll = mpll;
+	    
+		fscanf(fp, "%s", &buffer);
+		sscanf(buffer, "nvpll=%x", &nvpll);
+		card[number].nvpll = nvpll;
+	    }
+	    continue;    
+	}
+	fclose(fp);
+    }
+    else
+    {
+	/* Write the config file */
+    	fp = fopen("/tmp/nvclock", "w+");
+	fprintf(fp, "#This file is used by nvclock to be able to restore the card's speeds\n#Do not edit this file!\n");
+    
+	for(i = 0; i <= num; i++)
+	{
+	    int fd;
+	    if( (fd = open(card[i].dev_name, O_RDWR)) == -1 )
+	    {
+		error(ERROR, "Can't open %s", card[i].dev_name);
+		return;
+	    }
+	
+	    /* Only map the registers we need */
+	    PEXTDEV = map_dev_mem(fd, card[i].reg_address + 0x101000, 0xf);
+	    PRAMDAC = map_dev_mem(fd, card[i].reg_address + 0x680500, 0xf);
+
+	    fprintf(fp, "card=%d\n", i);
+	    fprintf(fp, "mpll=%08x\n", PRAMDAC[0x4/4]);
+	    fprintf(fp, "nvpll=%08x\n", PRAMDAC[0x0/4]);
+
+	    card[i].nvpll = PRAMDAC[0x0/4];
+	    card[i].mpll = PRAMDAC[0x4/4];
+	    unmap_dev_mem(card[i].reg_address + 0x101000, 0xf);
+	    unmap_dev_mem(card[i].reg_address + 0x680500, 0xf);
+	}
+	fclose(fp);
+    }
+}
+
+/* Check if the device is a videocard */
+int IsVideoCard(short dev, short bus, short function)
+{
+    long pci_class = pciReadLong(dev, bus, function, 0x9);
+
+    /* When the id isn't 0x03 the card isn't a vga card return 0 */
+    if(((pci_class >> 16) & 0xf) != 0x03)
+        return 0;
+    else
+        return 1;
+}
+
+long pciReadLong(short dev, short bus, short function, long offset)
+{
+    char file[25];
+    FILE *device;
+
+    snprintf(file, sizeof(file), "/proc/bus/pci/%02x/%02x.%x", dev, bus, function);
+    if((device = fopen(file, "r")) != NULL)
+    {
+	long buffer;
+	fseek(device, offset, SEEK_SET); 	    			    
+	fread(&buffer, sizeof(long), 1, device);
+	fclose(device);
+
+	return buffer;
+    }
+    
+    return -1;
+}
+
+
+int map_mem(const char *dev_name)
+{
+    int fd;
+
+    if( (fd = open(dev_name, O_RDWR)) == -1 )
+    {
+	error(ERROR, "Can't open %s", dev_name);
+	return -1;
+    }
+    
+    /* Map the registers of the nVidia chip */
+    nv_card.PEXTDEV = map_dev_mem(fd, nv_card.reg_address + 0x101000, 0x1000);
+    nv_card.PFB     = map_dev_mem(fd, nv_card.reg_address + 0x100000, 0x1000);
+    nv_card.PMC     = map_dev_mem(fd, nv_card.reg_address + 0x000000, 0x2000);
+    nv_card.PRAMDAC = map_dev_mem(fd, nv_card.reg_address + 0x680000, 0x2000);
+    
+    return 0;
+}
+
+
+void unmap_mem()
+{
+    unmap_dev_mem(nv_card.reg_address + 0x101000, 0x1000);
+    unmap_dev_mem(nv_card.reg_address + 0x100000, 0x1000);
+    unmap_dev_mem(nv_card.reg_address + 0x000000, 0x2000);
+    unmap_dev_mem(nv_card.reg_address + 0x680000, 0x2000);
+}
+
+/* -------- mmap on devices -------- */
+/* This piece of code is from nvtv a linux program for tvout */
+/* The author of nvtv got this from xfree86's os-support/linux/lnx_video.c */
+/* and he modified it a little  */
+
+
+void *map_dev_mem (int fd, unsigned long Base, unsigned long Size)
+{
+    void *base;
+    int mapflags = MAP_SHARED;
+    unsigned long realBase, alignOff;
+
+    realBase = Base & ~(getpagesize() - 1);
+    alignOff = Base - realBase;
+
+    base = mmap((caddr_t)0, Size + alignOff, PROT_READ|PROT_WRITE,
+	mapflags, fd, (off_t)realBase);
+    return (void *) ((char *)base + alignOff);
+}
+
+void unmap_dev_mem (unsigned long Base, unsigned long Size)
+{
+    unsigned long alignOff = Base - (Base & ~(getpagesize() - 1));
+    munmap((caddr_t)(Base - alignOff), (Size + alignOff));
+}

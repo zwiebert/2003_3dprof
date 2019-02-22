@@ -1,0 +1,13 @@
+dd.DeviceName="\\.\DISPLAY1"
+dd.DeviceString="NVIDIA GeForce4 MX 440"
+dd.DeviceKey="\REGISTRY\Machine\System\ControlSet001\Services\nv\Device0"
+dd.DeviceID="PCI\VEN_10DE&DEV_0171&SUBSYS_8F00147B&REV_A3"
+dd.StateFlags="08000005"
+
+-----------------------------------------------------------
+
+dd.DeviceName="\\.\DISPLAY3"
+dd.DeviceString="NetMeeting driver"
+dd.DeviceKey="\REGISTRY\Machine\System\ControlSet001\Services\mnmdd\Device0"
+dd.DeviceID=""
+dd.StateFlags="00000008"

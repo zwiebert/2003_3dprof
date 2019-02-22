@@ -1,0 +1,191 @@
+################################################################################
+# GNU Makefile For Distributing NVClockW32
+#
+# GNU Utils required: Make, Tar, Mkdir, Cp, Install, Rm, Sh, Touch, Env
+################################################################################
+
+
+#*******************************************************************************
+#                Configure Section. Modify This To Your Needs 
+#*******************************************************************************
+
+# nonstandard programs used by this Makefile
+#VSCOMNTOOLS could be used after converting path to unix
+devenv=env MAKEFLAGS="" "$$VS7DIR_CYGWIN/Common7/IDE/devenv.com"
+proj_dir=src
+sln_dir=.
+basename=NVClockW32
+
+update_website=sitecopy -u tn
+create_zip=/c/bin/7za a -tzip -bd -r >/dev/null
+create_sfx=/c/bin/7za a -r -bd -sfx7zC.sfx 
+extract_zip=/c/bin/7za x -tzip -bd >/dev/null
+install=install -p
+dist_state=
+
+# distribution names w/o archive suffix
+dist_basename=nvclock_w32
+distdir=../dist
+srcdist=$(dist_basename)$(dist_state)-src
+bindist=$(dist_basename)$(dist_state)-bin
+insdist=$(dist_basename)$(dist_state)
+docdir=manual
+
+
+
+# local web directory to copy dist archives before updating website
+html_dir_down=/x/home/bertw/proj/www/tn/html/proj/nvclock_w32/download
+html_dir_misc=/x/home/bertw/proj/www/tn/html/proj/nvclock_w32/misc
+
+
+build_and_test: check_abs_paths build
+build: $(distdir)/$(bindist).sfx.exe $(distdir)/$(srcdist).sfx.exe
+all: build www_remote
+
+# Files which go into source distribution. More files will be added by
+# the included Makefile.deps
+sources:=$(basename).GNUMakefile $(basename)_make_deps.sh MakeDepsFunctions.sh \
+ $(addprefix $(sln_dir)/$(basename)-Solution/, $(basename).sln NVClockW32-Readme.txt)
+-include $(basename).deps
+
+
+
+
+#*******************************************************************************
+#                               Distributions
+#*******************************************************************************
+#
+#
+#  Rules:
+#  * bindist $(distdir)/$(bindist).zip $(distdir)/$(bindist).sfx.exe: Binary distribution
+#  * bindist-msi BinInstaller/Release/3DProf.msi:  Binary MSI isntaller
+#  * testing: interactive testing of $(distdir)/$(bindist).zip
+#  * srcdist $(distdir)/$(srcdist).sfx.exe: Source distribution
+#
+
+#-------------------------------------------------------------------------------
+#  Binary ZIP and MSI Distribution
+#-------------------------------------------------------------------------------
+
+current_version=$(shell grep ProductVersion BinInstaller/BinInstaller.vdproj | sed -e 's/^.*8:\(.*\).$$/\1/')
+
+version.txt : FORCE
+	echo $(shell date --iso-8601) > version.txt
+
+###begin bindist
+bindist_root_files=$(bin_wio_sys) $(bin_wio_dll) $(bin_nvc_dll)  $(bin_nvc_exe) $(bin_nvc_log)
+bindist_include_files=$(dir_nvc_dll)/nvclock-dll.h $(dir_wio_dll)/WinIO.h
+bindist_lib_files=$(dir_nvc_dll)/Release/nvclock-dll.lib $(dir_wio_dll)/Release/WinIO.lib
+
+
+bindist_deps= $(bindist_root_files)
+
+builddir_bin_root=build/bindist
+builddir_bin=$(builddir_bin_root)/$(Dist_Basename)NVClockW32
+
+bindist $(distdir)/$(bindist).zip $(distdir)/$(bindist).sfx.exe : $(bindist_deps)
+	@mkdir -p $(distdir)
+	-rm -f $(distdir)/$(bindist).zip $(distdir)/$(bindist).sfx.exe
+	rm -rf $(builddir_bin_root)
+	mkdir -p $(addprefix $(builddir_bin)/, include lib) && mkdir $(distdir)
+	$(install) $(bindist_root_files)      $(builddir_bin)/
+	$(install) $(bindist_include_files)   $(builddir_bin)/include/
+	$(install) $(bindist_lib_files)       $(builddir_bin)/lib/
+	cd $(builddir_bin_root) && $(create_zip) $(bindist).zip '*'
+	mv $(builddir_bin_root)/$(bindist).zip $(distdir)/
+	cd $(builddir_bin_root) && $(create_sfx) $(bindist).sfx.exe '*'
+	mv $(builddir_bin_root)/$(bindist).sfx.exe $(distdir)/
+	-rm -f Makefile.deps
+
+
+
+#-------------------------------------------------------------------------------
+#   Build source distribution archive
+#-------------------------------------------------------------------------------
+### begin srcdist
+builddir_src_root=build/srcdist
+builddir_src=$(builddir_src_root)/$(Dist_Basename)NVClockW32Src
+prebuild_bin=
+
+srcdist $(distdir)/$(srcdist).sfx.exe : $(sources) $(prebuild_bin) 
+	@mkdir -p $(distdir)
+	-rm -f $(distdir)/$(srcdist).sfx.exe
+	rm -rf $(builddir_src_root) && mkdir -p  $(builddir_src)
+	@tar -cf- $(sources) $(project_files) $(prebuild_bin) | tar -xf- -C $(builddir_src) ; chmod -R +rw $(builddir_src)
+	cd $(builddir_src_root) && $(create_zip) $(srcdist).zip '*'
+	mv $(builddir_src_root)/$(srcdist).zip  $(distdir)/
+	cd $(builddir_src_root) && $(create_sfx) $(srcdist).sfx.exe '*'
+	mv $(builddir_src_root)/$(srcdist).sfx.exe $(distdir)/
+	-rm -f Makefile.deps
+### end srcdist
+
+
+#*******************************************************************************
+#                                   WWW Stuff
+#*******************************************************************************
+#
+#  Rules:
+#  * shots:      Takes some screenshots and safe them to local webdirectory
+#  * www_local:  Rebuilds local web directory (except for the shots)
+#  * www_remote: Rebuilds local and remote web directory (except for the shots)
+
+
+#-------------------------------------------------------------------------------
+#   Update Local Web Directory
+#-------------------------------------------------------------------------------
+
+### make local files
+www_local: build_and_test $(addprefix $(html_dir_down)/, $(distdir)/$(bindist).sfx.exe $(distdir)/$(srcdist).sfx.exe file_dates.txt) \
+www_local_shots
+
+
+### copy distribution archives
+www_local_bindist $(html_dir_down)/$(bindist).sfx.exe : $(distdir)/$(bindist).sfx.exe
+	$(install) $(distdir)/$(bindist).sfx.exe $(html_dir_down)
+www_local_srcdist $(html_dir_down)/$(srcdist).sfx.exe : $(distdir)/$(srcdist).sfx.exe
+	$(install) $(distdir)/$(srcdist).sfx.exe $(html_dir_down)
+
+
+### create a text file showing the release dates
+file_dates $(html_dir_down)/file_dates.txt : FORCE
+	cd $(html_dir_down) && ls -nGlht $(dist_basename)*.zip $(dist_basename)*.sfx.exe *.msi | sed -e "s/^...........................//" > file_dates.txt
+
+
+######
+
+
+#-------------------------------------------------------------------------------
+#   Update Remote Web Directory
+#-------------------------------------------------------------------------------
+
+www_remote: www_local
+	$(update_website)
+
+
+
+check_abs_paths: FORCE
+	if grep -e ':\\' $(project_files); then false; else :; fi
+
+
+
+
+#*******************************************************************************
+#                                 Maintenance
+#*******************************************************************************
+#
+#  * clean
+#  * Makefile.deps
+
+clean:
+	rm -f *~ $(distdir)/$(srcdist).zip $(distdir)/$(bindist).zip
+
+## Let a shell program extract source files from VS project files. It
+## creates also a build-rule for each project
+deps $(basename).deps : ./$(basename)_make_deps.sh MakeDepsFunctions.sh NVClockW32.GNUMakefile  $(project_files)
+	bash ./$(basename)_make_deps.sh  $(proj_dir) > $(basename).deps
+
+FORCE:
+.PHONY : FORCE deps clean bindist srcdist www_local www_remote www_local_bindist www_local_msi www_local_srcdist \
+www_local_shots shots $(phony_targets) check_abs_paths
+
+

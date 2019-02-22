@@ -1,0 +1,29 @@
+dd.DeviceName="\\.\DISPLAY1"
+dd.DeviceString="NVIDIA GeForce FX 5800"
+dd.DeviceKey="\Registry\Machine\System\CurrentControlSet\Control\Video\{6313A1E3-2698-4C97-95BE-145F27070E4F}\0000"
+dd.DeviceID="PCI\VEN_10DE&DEV_0302&SUBSYS_018010DE&REV_A2"
+dd.StateFlags="08000005"
+
+-----------------------------------------------------------
+
+dd.DeviceName="\\.\DISPLAY2"
+dd.DeviceString="NVIDIA GeForce FX 5800"
+dd.DeviceKey="\Registry\Machine\System\CurrentControlSet\Control\Video\{6313A1E3-2698-4C97-95BE-145F27070E4F}\0001"
+dd.DeviceID="PCI\VEN_10DE&DEV_0302&SUBSYS_018010DE&REV_A2"
+dd.StateFlags="00000001"
+
+-----------------------------------------------------------
+
+dd.DeviceName="\\.\DISPLAYV1"
+dd.DeviceString="NetMeeting driver"
+dd.DeviceKey="\Registry\Machine\System\CurrentControlSet\Control\Video\{8B6D7859-A639-4A15-8790-7161976D057A}\0000"
+dd.DeviceID=""
+dd.StateFlags="00000008"
+
+-----------------------------------------------------------
+
+dd.DeviceName="\\.\DISPLAYV2"
+dd.DeviceString="RDPDD Chained DD"
+dd.DeviceKey="\Registry\Machine\System\CurrentControlSet\Control\Video\{DEB039CC-B704-4F53-B43E-9DD4432FA2E9}\0000"
+dd.DeviceID=""
+dd.StateFlags="00000008"

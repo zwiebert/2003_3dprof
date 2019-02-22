@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDProf", "TDProf.csproj", "{807D71BD-4DE2-46BD-B68A-28527C6D57DD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuImageLib", "..\MenuImageLib\MenuImageLib.csproj", "{85739E8F-0814-4778-BD9F-4784A0685F90}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Debug -device_key = Debug -device_key
+		Debug -run Option = Debug -run Option
+		Debug_specfile_option = Debug_specfile_option
+		Release = Release
+		Release_Debug = Release_Debug
+		Remote Win98 Debug = Remote Win98 Debug
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Debug.ActiveCfg = Debug|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Debug.Build.0 = Debug|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Debug -device_key.ActiveCfg = Debug -device_key|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Debug -device_key.Build.0 = Debug -device_key|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Debug -run Option.ActiveCfg = Debug -run Option|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Debug -run Option.Build.0 = Debug -run Option|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Debug_specfile_option.ActiveCfg = Debug_specfile_option|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Debug_specfile_option.Build.0 = Debug_specfile_option|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Release.ActiveCfg = Release|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Release.Build.0 = Release|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Release_Debug.ActiveCfg = Release_Debug|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Release_Debug.Build.0 = Release_Debug|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Remote Win98 Debug.ActiveCfg = Remote Win98 Debug|.NET
+		{807D71BD-4DE2-46BD-B68A-28527C6D57DD}.Remote Win98 Debug.Build.0 = Remote Win98 Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug.ActiveCfg = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug.Build.0 = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug -device_key.ActiveCfg = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug -device_key.Build.0 = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug -run Option.ActiveCfg = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug -run Option.Build.0 = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug_specfile_option.ActiveCfg = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Debug_specfile_option.Build.0 = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Release.ActiveCfg = Release|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Release.Build.0 = Release|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Release_Debug.ActiveCfg = Release|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Release_Debug.Build.0 = Release|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Remote Win98 Debug.ActiveCfg = Debug|.NET
+		{85739E8F-0814-4778-BD9F-4784A0685F90}.Remote Win98 Debug.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

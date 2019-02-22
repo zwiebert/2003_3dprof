@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9,00"
+	Name="WinIO-Sys"
+	ProjectGUID="{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}"
+	Keyword="MakeFileProj"
+	TargetFrameworkVersion="131072"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="0"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="build.bat $(ConfigurationName) &quot;%WinDDK%&quot; &quot;$(TargetDir)&quot;"
+				ReBuildCommandLine="build.bat $(ConfigurationName) &quot;%WinDDK%&quot; &quot;$(TargetDir)&quot;"
+				CleanCommandLine="Clean.bat Debug"
+				Output="i386\WinIO.Sys"
+				PreprocessorDefinitions=""
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="0"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="build.bat $(ConfigurationName) &quot;%WinDDK%&quot; &quot;$(TargetDir)&quot;"
+				ReBuildCommandLine="build.bat $(ConfigurationName) &quot;%WinDDK%&quot; &quot;$(TargetDir)&quot;"
+				CleanCommandLine="Clean.bat Release"
+				Output="i386\WinIO.Sys"
+				PreprocessorDefinitions=""
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
+			>
+			<File
+				RelativePath="eventlog.c"
+				>
+			</File>
+			<File
+				RelativePath="ioctl.c"
+				>
+			</File>
+			<File
+				RelativePath="main.c"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc"
+			>
+			<File
+				RelativePath="WinIo_NT.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="build"
+			>
+			<File
+				RelativePath="build.bat"
+				>
+			</File>
+			<File
+				RelativePath="Clean.bat"
+				>
+			</File>
+			<File
+				RelativePath="..\copy_output.bat"
+				>
+			</File>
+			<File
+				RelativePath="MAKEFILE"
+				>
+			</File>
+			<File
+				RelativePath="SOURCES"
+				>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

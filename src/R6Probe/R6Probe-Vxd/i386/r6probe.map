@@ -1,0 +1,29 @@
+ R6PROBE
+
+ Timestamp is 42272870 (Thu Mar 03 16:08:32 2005)
+
+ Preferred load address is 00400000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0000018cH _LDATA                  CODE
+ 0001:0000018c 000002c0H _LTEXT                  CODE
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0001:00000000       R6PROBE_DDB                00401000     main.obj
+ 0001:00000050       card                       00401050     main.obj
+ 0001:00000409       IoControl                  00401409 f   ioctl.obj
+
+ entry point at        0000:00000000
+
+ Static symbols
+
+ 0001:00000290       R6_WaitForIdle             00401290 f   ioctl.obj
+ 0001:000002c1       R6IOC_ReadPCI              004012c1 f   ioctl.obj
+ 0001:000002e3       R6IOC_ReadMMR              004012e3 f   ioctl.obj
+ 0001:000002fd       R6IOC_ReadPLL              004012fd f   ioctl.obj
+ 0001:00000370       R6IOC_WritePLL             00401370 f   ioctl.obj
+ 0001:000003aa       R6IOC_WriteMMR             004013aa f   ioctl.obj
+ 0001:000003d0       R6IOC_GetVersion           004013d0 f   ioctl.obj
+ 0001:000003e8       R6IOC_GetAdapterInfo       004013e8 f   ioctl.obj
+ 0001:0000018c       findR6                     0040118c f   main.obj

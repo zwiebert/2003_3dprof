@@ -1,0 +1,13 @@
+dd.DeviceName="\\.\Display1"
+dd.DeviceString="RADEON 9500 PRO / 9700"
+dd.DeviceKey="System\CurrentControlSet\Services\Class\DISPLAY\0003"
+dd.DeviceID="PCI\VEN_1002&DEV_4E45&SUBSYS_00021002&REV_00\000800"
+dd.StateFlags="00000015"
+
+-----------------------------------------------------------
+
+dd.DeviceName="\\.\Display2"
+dd.DeviceString="RADEON 9500 PRO / 9700 - Secondary"
+dd.DeviceKey="System\CurrentControlSet\Services\Class\DISPLAY\0004"
+dd.DeviceID="PCI\VEN_1002&DEV_4E65&SUBSYS_00031002&REV_00\010800"
+dd.StateFlags="00000000"

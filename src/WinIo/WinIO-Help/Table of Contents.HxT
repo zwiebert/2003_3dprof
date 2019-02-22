@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE HelpTOC SYSTEM "MS-Help://Hx/Resources/HelpTOC.DTD">
+<HelpTOC DTDVersion="1.0" LangId="1033" ParentNodeIcon="Folder">
+	<HelpTOCNode Icon="2" Title="Introduction" Url="Intro.htm"/>
+	<HelpTOCNode Icon="1" Title="WinIo Reference">
+    
+    <HelpTOCNode Title="InitializeWinIo" Url="InitializeWinIo.htm"/>
+		<HelpTOCNode Title="ShutdownWinIo" Url="ShutdownWinIo.htm"/>
+		<HelpTOCNode Title="InstallWinIoDriver" Url="InstallWinIoDriver.htm"/>
+		<HelpTOCNode Title="MapIO" Url="MapIO.htm"/>
+    <HelpTOCNode Title="UnMapIO" Url="UnMapIO.htm"/>
+    <HelpTOCNode Title="RemoveWinIoDriver" Url="RemoveWinIoDriver.htm"/>
+    
+    
+    <HelpTOCNode Title="GetPortVal" Url="GetPortVal.htm"/>
+		<HelpTOCNode Title="SetPortVal" Url="SetPortVal.htm"/>
+		<HelpTOCNode Title="GetPhysLong" Url="GetPhysLong.htm"/>
+		<HelpTOCNode Title="SetPhysLong" Url="SetPhysLong.htm"/>
+		<HelpTOCNode Title="MapPhysToLin" Url="MapPhysToLin.htm"/>
+		<HelpTOCNode Title="UnmapPhysicalMemory" Url="UnmapPhysicalMemory.htm"/>
+    <ToolData Name="MSTOCEXPST" Value="Expanded"/></HelpTOCNode>
+	<HelpTOCNode Icon="1" Title="Using WinIo">
+		<HelpTOCNode Title="Visual Basic" Url="Visual%20Basic.htm"/>
+		<HelpTOCNode Title="Visual C++" Url="Visual%20C++.htm"/>
+		<HelpTOCNode Title="C++ Builder" Url="C++%20Builder.htm"/>
+		<HelpTOCNode Title="Using WinIo from a non-administrative account" Url="nonadmin.htm"/>
+    <ToolData Name="MSTOCEXPST" Value="Expanded"/></HelpTOCNode>
+	<HelpTOCNode Icon="11" Title="License Agreement" Url="License.htm"/>
+    <ToolData Name="MSTOCEXPST" Value="Expanded"/></HelpTOC>

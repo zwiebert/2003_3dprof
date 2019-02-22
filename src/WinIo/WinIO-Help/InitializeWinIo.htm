@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML XMLNS:MSHelp="http://msdn.microsoft.com/mshelp">
+  <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+  <BODY BGCOLOR="#ffffff">
+    <H3>InitializeWinIo</H3>
+    <P>
+      This function initializes the WinIo library.
+    </P>
+    <SPAN STYLE='BACKGROUND: #e5e5e5'>
+      <FONT SIZE="3">
+        <PRE><B>PVOID _stdcall InitializeWinIo();</B></PRE>
+      </FONT>
+    </SPAN>
+    <H4>Parameters</H4>
+    None
+    <H4>Return Values</H4>
+    <P>If the function succeeds, the returns a handle, to use it with some other 
+      functions of this library. Otherwise, the function returns NULL.
+    </P>
+    <H4>Remarks</H4>
+    <P>
+      The <B>InitializeWinIo</B> function must be called before using any other 
+      function in the library.
+      <BR>
+      <BR>
+      <B>Note:</B>
+      <UL>
+        <LI>
+          There is no need to invoke the <B>InitializeWinIo</B> function before calling 
+          the <B><A HREF="InstallWinIoDriver.htm">InstallWinIoDriver</A></B> and <B><A HREF="RemoveWinIoDriver.htm">
+              RemoveWinIoDriver</A></B>
+        functions.
+        <LI>
+          Under Windows NT/2000/XP, calling <B>InitializeWinIo</B> grants the application 
+          full access to the I/O address space. Following a call to this function, an 
+          application is free to use the _inp/_outp functions provided by the C run-time 
+          library to access I/O ports on the system.</LI>
+      </UL>
+    <P></P>
+  </BODY>
+</HTML>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<HTML xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<BODY BGCOLOR=#FFFFFF>
+
+<H3>Using WinIo in a C++ Builder application</H3>
+
+<P>
+In order to use WinIo in a C++ Builder application, you should take the following steps:
+<OL>
+<LI>Place winio.dll, winio.vxd and winio.sys in the directory where your application's executable file resides.
+<LI>Create a winio.lib file by running the IMPLIB utility that is bundled with C++ Builder.
+<LI>Add the generated winio.lib to your project file.
+<LI>Remove the WINIO_API constant from the function declarations in winio.h.
+<LI>Add the "#include "winio.h" statement to your source file.
+<LI>Call <B><A HREF="InitializeWinIo.htm">InitializeWinIo</A></B>.
+<LI>Call the library's functions to access I/O ports and physical memory.
+<LI>Call <B><A HREF="ShutdownWinIo.htm">ShutdownWinIo</A></B>.
+</OL>
+</P>
+
+</BODY>
+</HTML>

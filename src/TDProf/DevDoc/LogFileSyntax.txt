@@ -1,0 +1,24 @@
+Requirements:
+
+grep-able: one line per event. grepable type IDs
+allow filtering per event type like "Clocking" in event viewer: event type field
+full calendar date for each event
+tagged fields
+
+
+Field := Tag=Data
+Line  := Field[; ...]
+
+Tags:
+ D: Calendar Time in ISO format YYYY-MM-DD hh:mm:ss
+ T: event type (C=Clocking, R=registry, ...)
+ M: text message
+
+
+
+
+
+ 
+ 
+ 
+ 

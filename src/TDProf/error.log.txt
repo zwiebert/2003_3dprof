@@ -1,0 +1,154 @@
+See the end of this message for details on invoking 
+just-in-time (JIT) debugging instead of this dialog box.
+
+************** Exception Text **************
+System.InvalidCastException: Specified cast is not valid.
+   at RegDiff.RdKey.eq_object(Object lhs, Object rhs) in g:\home\bertw\proj\vs7\3dprof\tdprof\modules\driversettings\regdiff.cs:line 63
+   at RegDiff.RdKey.hr_diff(RdKey other) in g:\home\bertw\proj\vs7\3dprof\tdprof\modules\driversettings\regdiff.cs:line 127
+   at RegDiff.RdKey.hr_diff(RdKey other) in g:\home\bertw\proj\vs7\3dprof\tdprof\modules\driversettings\regdiff.cs:line 114
+   at RegDiff.RegDiff.test_rdkey() in g:\home\bertw\proj\vs7\3dprof\tdprof\modules\driversettings\regdiff.cs:line 17
+   at TDProf.RegDiffForm.timer_regDiff_Elapsed(Object sender, ElapsedEventArgs e) in g:\home\bertw\proj\vs7\3dprof\tdprof\forms\formregdiff.cs:line 168
+
+
+************** Loaded Assemblies **************
+mscorlib
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.288
+    CodeBase: file:///j:/windows/microsoft.net/framework/v1.0.3705/mscorlib.dll
+----------------------------------------
+tdprof
+    Assembly Version: 1.2.1463.8063
+    Win32 Version: 1.2.1463.8063
+    CodeBase: file:///G:/home/bertw/proj/VS7/3DProf/bin/Debug/tdprof.exe
+----------------------------------------
+System.Windows.Forms
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.288
+    CodeBase: file:///j:/windows/assembly/gac/system.windows.forms/1.0.3300.0__b77a5c561934e089/system.windows.forms.dll
+----------------------------------------
+System
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.288
+    CodeBase: file:///j:/windows/assembly/gac/system/1.0.3300.0__b77a5c561934e089/system.dll
+----------------------------------------
+tdprof.resources
+    Assembly Version: 1.2.1463.8063
+    Win32 Version: 1.2.1463.8063
+    CodeBase: file:///G:/home/bertw/proj/VS7/3DProf/bin/Debug/de/tdprof.resources.DLL
+----------------------------------------
+System.Drawing
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.288
+    CodeBase: file:///j:/windows/assembly/gac/system.drawing/1.0.3300.0__b03f5f7f11d50a3a/system.drawing.dll
+----------------------------------------
+MenuImageLib
+    Assembly Version: 1.0.1462.3565
+    Win32 Version: 1.0.1462.3565
+    CodeBase: file:///G:/home/bertw/proj/VS7/3DProf/bin/Debug/MenuImageLib.DLL
+----------------------------------------
+System.Xml
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.288
+    CodeBase: file:///j:/windows/assembly/gac/system.xml/1.0.3300.0__b77a5c561934e089/system.xml.dll
+----------------------------------------
+System.Runtime.Serialization.Formatters.Soap
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.288
+    CodeBase: file:///j:/windows/assembly/gac/system.runtime.serialization.formatters.soap/1.0.3300.0__b03f5f7f11d50a3a/system.runtime.serialization.formatters.soap.dll
+----------------------------------------
+
+************** JIT Debugging **************
+To enable just in time (JIT) debugging, the config file for this
+application or machine (machine.config) must have the
+jitDebugging value set in the system.windows.forms section.
+The application must also be compiled with debugging
+enabled.
+
+For example:
+
+<configuration>
+    <system.windows.forms jitDebugging="true" />
+</configuration>
+
+When JIT debugging is enabled, any unhandled exception
+will be sent to the JIT debugger registered on the machine
+rather than being handled by this dialog.
+
+
+
+
+
+
+See the end of this message for details on invoking 
+just-in-time (JIT) debugging instead of this dialog box.
+
+************** Exception Text **************
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at TDProf.GUI.FormMain.combos_mouse_enter(Object sender, EventArgs e) in z:\links\home\bertw\proj\vs7\3dprof\tdprof\formmain.cs:line 10296
+   at System.Windows.Forms.Control.OnMouseEnter(EventArgs e)
+   at System.Windows.Forms.ComboBox.WndProc(Message& m)
+   at System.Windows.Forms.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+
+
+************** Loaded Assemblies **************
+mscorlib
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.0
+    CodeBase: file:///j:/windows/microsoft.net/framework/v1.0.3705/mscorlib.dll
+----------------------------------------
+tdprof
+    Assembly Version: 1.0.1435.34696
+    Win32 Version: 1.0.1435.34696
+    CodeBase: file:///G:/home/bertw/proj/VS7/3DProf/bin/Debug/tdprof.exe
+----------------------------------------
+System.Windows.Forms
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.0
+    CodeBase: file:///j:/windows/assembly/gac/system.windows.forms/1.0.3300.0__b77a5c561934e089/system.windows.forms.dll
+----------------------------------------
+System
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.0
+    CodeBase: file:///j:/windows/assembly/gac/system/1.0.3300.0__b77a5c561934e089/system.dll
+----------------------------------------
+tdprof.resources
+    Assembly Version: 1.0.1435.34696
+    Win32 Version: 1.0.1435.34696
+    CodeBase: file:///G:/home/bertw/proj/VS7/3DProf/bin/Debug/de/tdprof.resources.DLL
+----------------------------------------
+System.Drawing
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.0
+    CodeBase: file:///j:/windows/assembly/gac/system.drawing/1.0.3300.0__b03f5f7f11d50a3a/system.drawing.dll
+----------------------------------------
+MenuImageLib
+    Assembly Version: 1.0.1435.10997
+    Win32 Version: 1.0.1435.10997
+    CodeBase: file:///G:/home/bertw/proj/VS7/3DProf/bin/Debug/MenuImageLib.DLL
+----------------------------------------
+System.Xml
+    Assembly Version: 1.0.3300.0
+    Win32 Version: 1.0.3705.0
+    CodeBase: file:///j:/windows/assembly/gac/system.xml/1.0.3300.0__b77a5c561934e089/system.xml.dll
+----------------------------------------
+
+************** JIT Debugging **************
+To enable just in time (JIT) debugging, the config file for this
+application or machine (machine.config) must have the
+jitDebugging value set in the system.windows.forms section.
+The application must also be compiled with debugging
+enabled.
+
+For example:
+
+<configuration>
+    <system.windows.forms jitDebugging="true" />
+</configuration>
+
+When JIT debugging is enabled, any unhandled exception
+will be sent to the JIT debugger registered on the machine
+rather than being handled by this dialog.
+
+

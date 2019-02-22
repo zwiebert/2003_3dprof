@@ -1,0 +1,58 @@
+ R6Probe
+
+ Timestamp is 50534943 (Fri Sep 14 17:12:03 2012)
+
+ Preferred load address is 00010000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0000045cH .text                   CODE
+ 0002:00000000 00000030H .idata$5                DATA
+ 0002:00000030 0000001cH .rdata                  DATA
+ 0002:0000004c 0000005fH .rdata$debug            DATA
+ 0003:00000000 0000016cH .data                   DATA
+ 0003:0000016c 00000000H .bss                    DATA
+ 0004:00000000 00000028H .idata$2                CODE
+ 0004:00000028 00000014H .idata$3                CODE
+ 0004:0000003c 00000030H .idata$4                CODE
+ 0004:0000006c 000000e0H .idata$6                CODE
+ 0005:00000000 00000058H .rsrc$01                DATA
+ 0005:00000060 00000300H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0001:00000000       _findR6@0                  00010300 f   main.obj
+ 0001:00000079       _unloadDriver@4            00010379 f   main.obj
+ 0001:00000123       _InitDevice@4              00010423 f   main.obj
+ 0001:000001d1       _DriverEntry@8             000104d1 f   main.obj
+ 0001:000003e1       _IoControl                 000106e1     ioctl.obj
+ 0001:00000420       _IoCompleteRequest@8       00010720 f   ntoskrnl:ntoskrnl.exe
+ 0001:00000426       _IoCreateDevice@28         00010726 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000042c       _IoCreateSymbolicLink@8    0001072c f   ntoskrnl:ntoskrnl.exe
+ 0001:00000432       _IoDeleteDevice@4          00010732 f   ntoskrnl:ntoskrnl.exe
+ 0001:00000438       _IoDeleteSymbolicLink@4    00010738 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000043e       _MmMapIoSpace@16           0001073e f   ntoskrnl:ntoskrnl.exe
+ 0001:00000444       _MmUnmapIoSpace@8          00010744 f   ntoskrnl:ntoskrnl.exe
+ 0001:0000044a       _RtlInitUnicodeString@8    0001074a f   ntoskrnl:ntoskrnl.exe
+ 0001:00000450       _HalGetBusData@20          00010750 f   hal:HAL.dll
+ 0001:00000456       _HalGetBusDataByOffset@24  00010756 f   hal:HAL.dll
+ 0002:00000000       __imp__HalGetBusData@20    00010780     hal:HAL.dll
+ 0002:00000004       __imp__HalGetBusDataByOffset@24 00010784     hal:HAL.dll
+ 0002:00000008       \177HAL_NULL_THUNK_DATA    00010788     hal:HAL.dll
+ 0002:0000000c       __imp__IoDeleteSymbolicLink@4 0001078c     ntoskrnl:ntoskrnl.exe
+ 0002:00000010       __imp__IoCreateSymbolicLink@8 00010790     ntoskrnl:ntoskrnl.exe
+ 0002:00000014       __imp__MmUnmapIoSpace@8    00010794     ntoskrnl:ntoskrnl.exe
+ 0002:00000018       __imp__RtlInitUnicodeString@8 00010798     ntoskrnl:ntoskrnl.exe
+ 0002:0000001c       __imp__IoCreateDevice@28   0001079c     ntoskrnl:ntoskrnl.exe
+ 0002:00000020       __imp__MmMapIoSpace@16     000107a0     ntoskrnl:ntoskrnl.exe
+ 0002:00000024       __imp__IoDeleteDevice@4    000107a4     ntoskrnl:ntoskrnl.exe
+ 0002:00000028       __imp__IoCompleteRequest@8 000107a8     ntoskrnl:ntoskrnl.exe
+ 0002:0000002c       \177ntoskrnl_NULL_THUNK_DATA 000107ac     ntoskrnl:ntoskrnl.exe
+ 0004:00000000       __IMPORT_DESCRIPTOR_ntoskrnl 00010a00     ntoskrnl:ntoskrnl.exe
+ 0004:00000014       __IMPORT_DESCRIPTOR_HAL    00010a14     hal:HAL.dll
+ 0004:00000028       __NULL_IMPORT_DESCRIPTOR   00010a28     ntoskrnl:ntoskrnl.exe
+
+ entry point at        0001:000001d1
+
+ Static symbols
+
+ 0001:000000e0       _mainDispatch@8            000103e0 f   main.obj

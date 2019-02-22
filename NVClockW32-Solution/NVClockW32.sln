@@ -1,0 +1,106 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nvclock-backend", "..\src\nvclock-backend\backend.vcproj", "{1384443C-E6EA-4351-AE07-F9F13F440DC2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{23ED1335-8635-498A-88E7-3E86CB7D729B} = {23ED1335-8635-498A-88E7-3E86CB7D729B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nvclock-dll-test", "..\src\nvclock-dll-example\nvclock-dll-example.vcproj", "{92DED713-F741-4343-A682-5B9E2BFD0EEE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{12C18404-94E8-4258-969B-DCBD3CA3BF42} = {12C18404-94E8-4258-969B-DCBD3CA3BF42}
+		{23ED1335-8635-498A-88E7-3E86CB7D729B} = {23ED1335-8635-498A-88E7-3E86CB7D729B}
+		{1384443C-E6EA-4351-AE07-F9F13F440DC2} = {1384443C-E6EA-4351-AE07-F9F13F440DC2}
+		{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3} = {19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinIO-Sys", "..\src\WinIo\WinIO-Sys\WinIO-Sys.vcproj", "{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nvclock-exe", "..\src\nvclock-exe\nvclock.vcproj", "{9BC2A23F-A488-4197-ABB4-E66C29CB369A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{23ED1335-8635-498A-88E7-3E86CB7D729B} = {23ED1335-8635-498A-88E7-3E86CB7D729B}
+		{1384443C-E6EA-4351-AE07-F9F13F440DC2} = {1384443C-E6EA-4351-AE07-F9F13F440DC2}
+		{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3} = {19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinIo-DLL", "..\src\WinIo\WinIO-DLL\WinIo.vcproj", "{23ED1335-8635-498A-88E7-3E86CB7D729B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3} = {19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinIO-Vxd", "..\src\WinIo\WinIO-Vxd\WinIO-Vxd.vcproj", "{889DBA1C-F8D8-488E-AE0D-6D10F71A0137}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinIo-Test", "..\src\WinIo\WinIo-Test\WinIoTest.vcproj", "{E3279314-2239-4EE7-86EC-5988CC17877E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nvclock-dll", "..\src\nvclock-dll\nvclock-dll.vcproj", "{12C18404-94E8-4258-969B-DCBD3CA3BF42}"
+	ProjectSection(ProjectDependencies) = postProject
+		{23ED1335-8635-498A-88E7-3E86CB7D729B} = {23ED1335-8635-498A-88E7-3E86CB7D729B}
+		{1384443C-E6EA-4351-AE07-F9F13F440DC2} = {1384443C-E6EA-4351-AE07-F9F13F440DC2}
+		{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3} = {19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nvclock-log", "..\src\nvclock-log\nvclock-log.vcproj", "{400281B5-A9DC-47ED-BD92-EC2F2632C50C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1384443C-E6EA-4351-AE07-F9F13F440DC2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1384443C-E6EA-4351-AE07-F9F13F440DC2}.Debug|Win32.Build.0 = Debug|Win32
+		{1384443C-E6EA-4351-AE07-F9F13F440DC2}.Release|Win32.ActiveCfg = Release|Win32
+		{1384443C-E6EA-4351-AE07-F9F13F440DC2}.Release|Win32.Build.0 = Release|Win32
+		{92DED713-F741-4343-A682-5B9E2BFD0EEE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{92DED713-F741-4343-A682-5B9E2BFD0EEE}.Debug|Win32.Build.0 = Debug|Win32
+		{92DED713-F741-4343-A682-5B9E2BFD0EEE}.Release|Win32.ActiveCfg = Release|Win32
+		{92DED713-F741-4343-A682-5B9E2BFD0EEE}.Release|Win32.Build.0 = Release|Win32
+		{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}.Debug|Win32.Build.0 = Debug|Win32
+		{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}.Release|Win32.ActiveCfg = Release|Win32
+		{19DB07EC-EBE5-4F5D-8842-AFFD086CADB3}.Release|Win32.Build.0 = Release|Win32
+		{9BC2A23F-A488-4197-ABB4-E66C29CB369A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9BC2A23F-A488-4197-ABB4-E66C29CB369A}.Debug|Win32.Build.0 = Debug|Win32
+		{9BC2A23F-A488-4197-ABB4-E66C29CB369A}.Release|Win32.ActiveCfg = Release|Win32
+		{9BC2A23F-A488-4197-ABB4-E66C29CB369A}.Release|Win32.Build.0 = Release|Win32
+		{23ED1335-8635-498A-88E7-3E86CB7D729B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{23ED1335-8635-498A-88E7-3E86CB7D729B}.Debug|Win32.Build.0 = Debug|Win32
+		{23ED1335-8635-498A-88E7-3E86CB7D729B}.Release|Win32.ActiveCfg = Release|Win32
+		{23ED1335-8635-498A-88E7-3E86CB7D729B}.Release|Win32.Build.0 = Release|Win32
+		{889DBA1C-F8D8-488E-AE0D-6D10F71A0137}.Debug|Win32.ActiveCfg = Debug|Win32
+		{889DBA1C-F8D8-488E-AE0D-6D10F71A0137}.Debug|Win32.Build.0 = Debug|Win32
+		{889DBA1C-F8D8-488E-AE0D-6D10F71A0137}.Release|Win32.ActiveCfg = Release|Win32
+		{889DBA1C-F8D8-488E-AE0D-6D10F71A0137}.Release|Win32.Build.0 = Release|Win32
+		{E3279314-2239-4EE7-86EC-5988CC17877E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E3279314-2239-4EE7-86EC-5988CC17877E}.Debug|Win32.Build.0 = Debug|Win32
+		{E3279314-2239-4EE7-86EC-5988CC17877E}.Release|Win32.ActiveCfg = Release|Win32
+		{E3279314-2239-4EE7-86EC-5988CC17877E}.Release|Win32.Build.0 = Release|Win32
+		{12C18404-94E8-4258-969B-DCBD3CA3BF42}.Debug|Win32.ActiveCfg = Debug|Win32
+		{12C18404-94E8-4258-969B-DCBD3CA3BF42}.Debug|Win32.Build.0 = Debug|Win32
+		{12C18404-94E8-4258-969B-DCBD3CA3BF42}.Release|Win32.ActiveCfg = Release|Win32
+		{12C18404-94E8-4258-969B-DCBD3CA3BF42}.Release|Win32.Build.0 = Release|Win32
+		{400281B5-A9DC-47ED-BD92-EC2F2632C50C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{400281B5-A9DC-47ED-BD92-EC2F2632C50C}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		DPBuild = 6
+	EndGlobalSection
+	GlobalSection(DevPartner Solution Properties) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+	GlobalSection(DevPartner) = postSolution
+	EndGlobalSection
+EndGlobal

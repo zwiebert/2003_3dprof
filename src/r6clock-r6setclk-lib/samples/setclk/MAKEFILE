@@ -1,0 +1,56 @@
+##############################################################################
+# $Id: MAKEFILE,v 1.1.1.1 2002/01/25 22:14:25 VSi Exp $
+#
+# MAKEFILE for setclk utility
+#
+# ----------------------------------------------------------------------------
+# LICENSE
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License (GPL) as published by the
+# Free Software Foundation; either version 2 of the License, or (at your
+# option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# To read the license please visit http://www.gnu.org/copyleft/gpl.html
+# ----------------------------------------------------------------------------
+# $Log: MAKEFILE,v $
+# Revision 1.1.1.1  2002/01/25 22:14:25  VSi
+# Imported to CVS
+#
+# ----------------------------------------------------------------------------
+#                    Copyright (C) 2001-2002 Vahur Sinij„rv
+##############################################################################
+
+!include ..\..\..\master.mk
+
+LD      = link
+CFLAGS  = -c -Ox -Gf -nologo
+LIBDIR  = ..\..\..\lib
+LIBS    = kernel32.lib user32.lib advapi32.lib $(LIBDIR)\r6probe.lib $(LIBDIR)\setclk.lib
+LFLAGS  = -ignore:4060 -release -opt:ref -subsystem:console -incremental:no -opt:nowin98 -libpath:$(PSDK)\lib -libpath:"$(MSVCDIR)\lib"
+INCLUDE = -I../../../include -I"$(PSDK)/include" -I"$(MSVCDIR)/include" -I"$(MSVCDIR)/PlatformSDK/include"
+TARGET  = obj\setclk.exe
+OBJ     = obj\main.obj obj\options.obj
+
+!ifdef DEBUG
+CFLAGS = -c -nologo -Zi -DDEBUG=1
+LFLAGS = -ignore:4060 -debug -opt:ref -subsystem:console -incremental:no -opt:nowin98 -libpath:$(PSDK)\lib -libpath:"$(MSVCDIR)\lib"
+!endif
+
+.c{obj}.obj:
+    if not exist obj md obj
+    $(CC) $(CFLAGS) $(INCLUDE) -Fo$@ $<
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ) $(LIBDIR)\setclk.lib $(LIBDIR)\r6probe.lib
+    $(LD) $(LFLAGS) $(LIBS) $(OBJ) -out:$(TARGET)
+
+clean:
+    del obj\*.obj
+    del $(TARGET)

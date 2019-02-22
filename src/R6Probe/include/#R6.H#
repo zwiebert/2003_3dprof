@@ -1,0 +1,42 @@
+/* $Id: R6.H,v 1.1.1.1 2002/01/25 22:14:25 VSi Exp $
+ *
+ * Header file for Radeon specific stuff
+ *
+ * ----------------------------------------------------------------------------
+ * LICENSE
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License (GPL) as published by the
+ * Free Software Foundation; either version 2 of the License, or (at your
+ * option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.xc
+ *
+ * To read the license please visit http://www.gnu.org/copyleft/gpl.html
+ * ----------------------------------------------------------------------------
+ * $Log: R6.H,v $
+ * Revision 1.1.1.1  2002/01/25 22:14:25  VSi
+ * Imported to CVS
+ *
+ * ----------------------------------------------------------------------------
+ *                    Copyright (C) 2001-2002 Vahur Sinij„rv
+ * ----------------------------------------------------------------------------
+ */
+#ifndef R6_H
+#define R6_H
+
+#define RADEON_MMR_SIZE             0x4000
+#define RADEON_BIOS_SIZE            (32 * 1024)
+
+#define RADEON_CRTC_MODE_1_BPP      0
+#define RADEON_CRTC_MODE_4_BPP      1
+#define RADEON_CRTC_MODE_8_BPP      2
+#define RADEON_CRTC_MODE_15_BPP     3
+#define RADEON_CRTC_MODE_16_BPP     4
+#define RADEON_CRTC_MODE_24_BPP     5
+#define RADEON_CRTC_MODE_32_BPP     6
+
+#endif

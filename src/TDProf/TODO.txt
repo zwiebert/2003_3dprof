@@ -1,0 +1,563 @@
+* BUGS
+
+** bug-bw/12-Sep-05: copying.txt missing in NSIS distribution?
+
+** bug-bw/29-Mar-04: Tray-Icon missing after return from Windows stand-by mode
+
+** bug-bw/21-Nov-03: undoing checkboxing for "red-text" boxes does not
+   happen for intial (at startup) loaded profile
+
+** bug-bw/12-Oct-03: RegDiff: no output at Windows-98SE
+*** debug-bw/17-Oct-03: Timer is not working. Dunno why. Maybe only
+    one timer is allowed? Try to disable polling-timer which updates
+    registry settings. (workaround: click into the window to trigger
+    event)
+
+
+* TODO
+
+** todo-bw/12-Aug-04: Store locations of Walkthroughs, Hint sites,
+   etc. Access them by a per profile list via button, menu, hotkey.
+
+** todo-bw/24-Dec-03: Let the user choose a profile to start with
+   Windows. (Maybe just add a -run "Some Profile" option to the 3DProf
+   Registry value in Run key.)
+
+** todo-bw/08-Dec-03: Show game icon somewhere in main window
+
+** todo-bw/08-Dec-03: Impelement profile renaming by button or
+   menu. (Problematic for Shell Shortcuts, so there woul be a reason
+   for not having it. Cloning can be used for renaming too.)
+
+** todo-bw/25-Nov-03: if no specfile is found, we should give the
+   option to remove autostart
+
+** todo-bw/15-Nov-03: Calc Checksum from important parsed data instead
+   of file content.
+
+** todo-bw/14-Nov-03: Let it run on unknonwn graphic boards. Just
+   disable all graphic card dependent settings (D3D/OGL/...).
+
+** ???-bw/14-Nov-03: What about F1 help for explaining some menu items
+   to user? Or just displaying an info field somewhere and show help
+   when mouse is over a menu.
+
+** todo-bw/13-Nov-03: specfiles are using ISO-1 encoding only. I
+   guess, Unicode woud be best for config-files.
+
+** todo-bw/09-Nov-03: Copy settings dialog: Source and Destination
+   profile are choosed via ComboBox. Special Source: "Current
+   Settings", Special Destination: "All." Any option can be excluded
+   from copy operation.
+
+** todo-bw/12-Oct-03: Post-Commands: they should not require
+   Auto-Restore to work
+
+** todo-bw/01-Jul-03: Add Option to apply default profiles with
+   special names before and after running a game. Useful, if a profile
+   have some settings disabled.
+
+** todo-bw/01-Jul-03: Implement Undo Current Settings Function by a
+   list of AutoRestore() objects
+
+** todo-bw/27-Jun-03: Add Undo profile to restore settings.
+
+** todo-bw/22-Jun-03: New menu: Copy from...  current settings +
+   profile (place on top the current settings and special profiles
+   like Hight Quality)
+
+
+
+* INCOMPLETE
+
+*** done-bw/02-Oct-04: 1.3.82 - basic ATI CCC suporrt
+** todo-bw/02-Oct-04: improve specfile::define_test macro
+** todo-bw/02-Oct-04: clean up CCC section in ati-r300-win.cfg
+
+** todo-bw/02-Aug-04: diagnostic logfile with filtering viewer
+*** started-bw/02-Aug-04: todo: prevent logfile from fragmenting file system, implement viewer
+
+** bug-bw/17-Jul-04: tray-menu/game.ini does not notice new entries
+   unti program-restart.
+*** workaround-bw/19-Jul-04: refreshed in a menu-popup callback
+
+** todo-bw/18-Jul-04: NSIS installer
+*** done-bw/18-Jul-04: first working version 
+
+** todo-bw/05-Jul-04: Add and document internal :Resolution pre/post-command to change screen resolution
+*** done-bw/05-Jul-04: Command added.
+** todo-bw/05-Jul-04: document it:
+:Resolution 1024x786@85
+:Resolution 1024x786@85,32bpp
+:Resolution 1024x786@85Hz,16bpp
+:Resolution 2:1024x786@85 (display number currently does not work)
+
+
+** todo-bw/28-Jun-03: The auto restore is not 100% reliable. It would
+   be easy to just always open a popup windows to confirm restore. That
+   would work with all games. Now we just open a requester then a game
+   was running less than 2 minutes. That could mean, the game is using
+   a launcher itself who detaches the game from the process started by
+   us. NOLF and Morrowind and many other do this.
+*** partially-done-bw/12-Nov-03: menu allows forcing the confirm
+    requester dialog.
+
+
+** bug-bw/28-Dec-03: When quitting TDProf.exe while it waits in Auto
+   Restore thread the mutex survives. 3DProf cannot be started
+   again. It should open a requester which offers full quit (incl. auto
+   restore and cancel the quitting).
+*** done-bw/18-Jun-04: Mutex.Close() is now explicitly called after
+    the GUI is closed.
+
+*** done-bw/02-Apr-04: manual images will be generated on user machine
+
+*** done-bw/27-Mar-04: unmounting mounted images after game
+**** left-bw/27-Mar-04: TDProfSL.exe support for that feature or
+     removing TDProfSL.exe?. Making unmounting configurable?
+
+*** done-bw/19-Feb-04: Updating private settings of ATI Control Panel.
+**** left-bw/19-Feb-04: support for drivers older than 7.98
+***** done-bw/26-Feb-04
+**** left-bw/19-Feb-04: Win9x/ME support.
+
+** todo-bw/27-Jan-04: Try to restore screen resolution after game
+   finishes (in case there is something wrong with it). Do this
+   restore together wit with ATI blackscreen.
+*** done-bw/27-Jan-04: implemented in DisplayInfo class
+    (save_resolution()/restore_resolution()). No ATI blackscreen
+    optimization yet. Does not work with TDProfSL.exe.
+
+** bug-bw/04-Jan-04: Problem with 2D profiles: They are bound to the video card at
+   creation. Hotkeys stop to work as soon the card is changed. The
+   user has to reattach the profile to the current board.
+*** done-bw/04-Jan-04: user can choose 2D in menu Profile | Templates.
+** todo-bw/04-Jan-04: Make templates accesible when creating new
+   profiles.
+
+** todo-bw/08-Dec-03: In-Game-HotKey function + Gamma settings
+** todo-bw/24-Dec-01: Lauching profiles with hotkeys 
+*** done-bw/24-Dec-03: Hotkey module implemented
+*** done-bw/27-Dec-03: Profile hotkeys working
+
+** todo: R6Probe-driver, R6Probe-lib, SetClk-lib: Move from assembly
+   language to C.
+*** done-bw/30-Nov-03: Both libs are now 100% C. I added NT-driver
+    loading code in r6probe_open(). It should be at least useful for
+    debugging r6probe.sys because latest driver binary is reloaded
+    every time.
+
+** bug-bw/22-Jun-03: Prevent open/save profiles by more than one
+   instance of TDProf. Lock the file or prevent TDProf from running
+   twice. -bw/25-Jun-03: But allow read-only access for -run option
+   and maybe for GUI too (but options.cfg must be read-only too in
+   this case).
+*** done-bw/14-Dec-03: A Mutex is created when running with GUI. It
+    contains a GUID. The GUID is stored in options.cfg config file as
+    config_guid. This GUID is created once when config_guid does not
+    exist. Using the absolute path for a Mutex name would not be
+    possible (too long) and there may be different paths when using
+    NTFS softlinks (junctions).
+** todo-bw/14-Dec-03: Activate current running 3DProf instead of
+   "Already Running" message box. 
+
+
+* DONE
+
+1.3.91
+
+** bug-bw/16-Feb-05: GUI/exe-args: When inserting text into the
+   exe-args TextBox, the cursor jumps at the end of the text after
+   each character.
+*** done-bw/26-Mar-05: Update TextBoxes only if Focused property is False.
+
+* 1.3.90
+
+** bug-bw/03-Mar-05: "Cancel" does not restore the right-hand side
+   controls in experimental tab.
+
+** bug-bw/03-Mar-05: r6probe.sys crashes since 1.3.81
+*** done-bw/03-Mar-05: Some problem with MSAM5 compatibility option
+    -Zm. Fixed by using debug.exe option "-nmake NOMASMCOMPATIBILITY="
+
+* 1.3.89
+
+*** done-bw/08-Feb-05: SuspendLayout/ResumeLayout pair around
+    update_from_gpd() for faster updating
+*** done-bw/08-Feb-05: ComboBoxes on extra tabs (D3D, OGL) are now
+    generated dynamically by code instead of GUI designer.
+*** done-bw/08-Feb-05: MainForm::Tab::Experimental improved
+
+** todo-bw/30-Oct-04: TDProfGD.exe - rename it to something else like
+   <GameExeBaseName>.3DProf.exe or <ProfileName>.3DProf.exe to allow
+   more than one copy in the same game directory
+*** done-bw/31-Oct-04: <GameExeBaseName>.3DProf.exe is used (does not
+    allow multiple profiles without renaming, but is easier to use in
+    the Browser (just insert or remove "3DProf" before ".exe"
+
+
+** bug-bw/03-Jun-04: src-distribution: specfiles not automatically copied
+** bug-bw/03-Jun-04: src-distribution: nvclock.dll build before 2
+   static libraries linked to it
+*** done-bw/??-Sep-04
+
+*** done-bw/09-Sep-04: 1.3.80 - Moved to VS.NET 2003 / Framework 1.1
+
+*** done-bw/17-Aug-04: OpenGL-VF: new entry "120 Hz" added on user
+    request.
+
+** bug-bw/17-Aug-04: Unhandled Exception when clicking Save button,
+   after deleting last profile (with highest index, and no following
+   hidden profiles). (Also causes deleting unselected profiles, wehen
+   hittin Delete butteon more than once)
+*** done-bw/17-Aug-04: Delete-Button-click-handler now makes all
+    current-profile (m_gpd, m_gpi) invalid.
+
+*** done-bw/03-Aug-04: Experimental Clocking. On Radeon, W2K/XP only:
+    Clocking DLL can now be enabled from Settings | Advanced |
+    Alternative Clocking Implementation
+
+*** done-bw/02-Aug-04: r6clock-lib and r6clock-dll: new divider
+    calculation (old code had a problem with that common reference
+    divider). Clocking on Radeon is now more accurate.
+
+*** done-bw/18-Jul-04: R6ProbeInstaller: added InstallFolder dialog
+
+** todo-bw/17-Jul-04: tray menu - game.ini: exception if game.ini doet
+   not exist
+*** done-bw/18-Jul-04: Exception catched by error
+    messages. Notepad.exe used for unknown data-types.
+
+** todo-bw/15-Jul-04: Add non-interactive self tests
+*** done-bw/16-Jul-04: new option -selftest
+
+** bug-bw/15-Jul-04: Exception in
+   FormMain.tab_exp_update_from_gpd(GameProfileData gpd)
+*** done-bw/15-Jul-04: gpd parameter was null.
+
+** bug-bw/29-Jun-04: exception or missing autorestore dialog for very
+   short running game launchers
+*** done-bw/29-Jun-04: exception catch in AppRunProfile.run_game()
+
+** todo-bw/03-Jun-04: Wrong control size in main-window with unusual
+   DPI setting in Windows.
+*** done-bw/28-Jun-04: Forms bug? Triggered by loading the form in
+    Minimized state
+
+** bug-bw/26-Jun-04: compact gui fails when started with -iconic
+*** -bw/26-Jun-04: FormMain.gui_compact() improved 
+
+** bug-bw/03-Jun-04: src-distribution: manifest file not copied
+*** done-bw/18-Jun-04: copy command in _copy_specfiles.bat added
+
+** todo-bw/10-Jun-04 No parameters passing to game from TDProfGD.exe
+*** done-bw/10-Jun-04/1.3.57: -alt_exe and -- option of TDProf.exe
+    ingored. Missing code in new RunProile constructor.
+
+*** done-bw/04-Jun-04: auto restore non-gui checkbox in settings
+    dialog not set
+*** done-bw/04-Jun-04: global disabling of autorestore was ignored in
+    new unified run code
+
+*** done-bw/05-May-04: specfile: implemented backslash to continue
+    lines
+
+** bug-bw/10-Apr-04: driver version comparison broken for ATI
+*** done-bw/10-Apr-04: wront implementation for numbers containing
+    points
+
+*** done-bw/07-Apr-04: specfile: new keyword "alias"
+
+
+** bug-bw/01-Feb-04: 'Read' attribute in saving hotkeys
+
+** bug-bw/22-Jan-04: Tray Icon: iconfy to tray while in timout for
+   deferred icon hiding can cause both icon and window being
+   invisible.
+*** done-bw/22-Jan-04: code to abort thread added. Make sure all icon
+    hiding is done through FormMain.tray_icon_visibility().
+
+** bug-bw/21-Jan-04: Hotkey editor: Escape key did not work for
+   application hotkeys.
+*** done-bw/21-Jan-04: Copy&Paste error. It modified the profile
+    hotkey Hashtable.
+
+** bug-bw/21-Jan-04: Hotkey editor: modfier keys displayed after
+   releasing them. (cosmetic error)
+*** done-bw/21-Jan-04
+
+** Clocking.cs: clocking is clamped to ac.clocking_limits now
+*** done-bw/16-Jan-04
+
+** todo-bw/04-Dec-03: Hidden names in specfiles. Can be used for
+   configurations having more than one valid value (like unset
+   registry values meaning the default). Can also be used for options
+   not working, so we don't want to show them in combo box list, but
+   telling the user the option if set by other tweakers.
+*** done-bw/08-Dec-03: flags=(hidden) and parent="name". Needs to be
+    documentet (done--bw/15-Jan-04)
+
+** todo-bw/07-Dec-03: Add default clock configuration to
+   Settings=>Clocking dialog.
+*** done-bw/15-Jan-04: Clocking presets (Slow, Normal, Fast, Ultra)
+   usable for clocking and restore.
+
+** bug-bw/12-Jan-04: disabled clocks in profile not set to zero were
+   applied
+*** done-bw/12-Jan-04
+
+** bug-bw/12-Jan-04: R6Probe.sys|vxd: PCI-ID recognization broken
+*** done-bw/12-Jan-04: The 16bit shift to get the device ID to CPU
+    register AX was done in each table lookup block again, instead
+    once for all.
+
+
+** bug-bw/07-Jan-04: 2D Profiles not always shown when "Hide Other Cards" is enabled.
+*** done-bw/07-Jan-04: Compare method of GameProfileData now
+    recognizes 2D profiles. Sorting will place them behind the
+    profiles of the installed video board. (Maybe it would be better
+    to place them before)
+
+** new menu item Profile | Templates to set typical roles like 2D profile, Clocking-only
+*** done-bw/04-Jan-04
+
+** bug-bw/04-Jan-04: An undefined registry value (undef:dummy) is not
+   recognized if its key does not exist. (Some sub-keys, like \OpenGL
+   does not always exist from the beginning)
+
+** bug-bw/28-Dec-03: Legacy code in FormMain is disabling menu items
+   in Profile | Auto Restore
+*** done-bw/28-Dec-03
+
+** bug-bw/01-Dec-03: Belongs to this Card menu is using that old
+   ax.spec_name. Problems with usr- prefixed files.
+*** done-bw/01-Dec-03: ax.spec_name removed.
+
+** Dist-Makefile has now greatly improved. Rules are build
+   automatically from c++/c# project files by make_deps.sh
+*** done-bw/01-Dec-03
+
+** bug-bw/30-Nov-03: When apply a profile with disabled clockings,
+    default clock is set.
+*** done-bw/30-Nov-03
+
+** todo: change auto-start option -iconic to "new" option -tray
+** bug: windows-tweak menu is made by check_mv() because of copy&paste
+    code-reuse.
+** todo: specfile language: gui_label/gui_tooltip keywords can have
+   two-letter-language suffixes.
+** todo: config record: associative arrays (Hashtable class) are used
+   to store localized text. Allows runtime switiching now.
+*** done-bw/2x-Nov-03
+
+*** done-bw/15-Nov-03: re-init 3D setting controls when users does
+    language switching.
+
+** todo: Separate item names from text shown in GUI controls (like
+   always planned).
+*** done-bw/13-Nov-03: New specfile item-tag "text" (optional
+   text.TWO_LETTER_LANG_CODE).
+*** left-todo: Fix all code which reads-back control text instead of
+   item name (new checkboxing feature does this x-/ ).
+*** done-bw/15-Nov-03
+
+** todo-bw/15-Nov-03: Allow modifications of specfile config records.
+*** done-bw/15-Nov-03: new label prefix [+] to extend data
+    (e.g. adding localized texts)
+
+*** done-bw/15-Nov-03: in ConfigRecord.cs: ConfigItem and ConfigItems
+    are now private nested classes.
+
+** todo-bw/12-Nov-03: Problem wiith check boxes in 3D settings:
+   ComboBox does have that special Text-Red state. This happens if a
+   value is not really part of the list. So it is shown red in the
+   combo box as text, so the user should choose a existing value from
+   list. How to do this with check boxes? maybe by using the text
+   part? Or just making the combo box visible again?
+*** done-bw/14-Nov-03: combo boxes turn back visible as long there is
+    no value from list selected.
+
+** bug-bw/14-Nov-03: Mouse-over feedback: does not work for row-label
+   on (double-width) Radeon-SmartShader checkboxes
+*** done-bw/14-Nov-03: Old number of 2*2 extra options was used. I
+    knew it was a mistake to use literals. Now using new constants
+    cr_modes_extra[12]_start.
+
+** bug-bw/13-Nov-03: Error in rv-strict regexp. Bitmasks of both dword
+   and hex wasn't followed by an ? to make them optional. So the old
+   rv regexp was used.
+*** done-bw/13-Nov-03
+
+** remade profile options about autore_restore.
+*** done-bw/13-Nov-03: no backward compatibility (maybe I add code for
+    that tomorrow)
+
+** bug-bw/12-Nov-03: in profile summary, RAM to free and process prio
+   class only displayed if game ini file present.
+*** done-bw/12-Nov-03: wrong if-block nesting
+
+** "use 3d checkboxes" now configurable by user
+** added special 2 ATI menus to open control panel in new and old
+   version
+*** done-bw/12-Nov-03
+
+** bug-bw/12-Nov-03: menu Experimenal Menu Icons is not saving the
+   settings. And it is not initialized from settings at loading.
+*** done-bw/12-Nov-03
+
+** bug-bw/11-Nov-03: -alt_exe was not working with TDProfSL.exe. Plus,
+   it required at least a dummy exe in profile.
+*** done-bw/11-Nov-03
+
+** In FormMain.cs: running a game (incl. all pre-commands) is now done
+   in its own thread. (GUI stays responsible; waiting-only thread no
+   longer needed)
+*** done-bw/10-Nov-03
+
+** bug-bw/30-Oct-03: Vanishing image file menu items in tray menu when
+   updating image files in main window.
+*** done-bw/10-Nov-03: In init_tray_menu_from_gp(): menu was not a member of parent-menu array.
+
+** bug-bw/08-Nov-03: Wrong registry path in R6Probe MSI installer (one
+   should not do any coding while being half asleep)
+*** done-bw/08-Nov-03
+
+** bug-bw/20-Oct-03: If included spec-file missing then error message
+   reports the wrong (topmost) missing file.
+** include config file name and line number in specfile-parse-error messages
+*** done-bw/30-Oct-03
+
+** RegDiff: menu-item for regdiff of ATI software key
+** RegDiff: header containing key-name and logfile-name
+** New feature: Pre/Post commands
+** GUI improvements
+** Localization
+** Specfile-Syntax: if(lang == Two_Letter_ISO) added
+** Specfile-Content: Detonator-51.xx support.
+** Specfile-Content: Catalyst-3.8 SmartShader support.
+** Bug: DisplayInfo.cs: Missing [Out] in DevMode struct
+** Distributions-Makefile: Source files are now extracted from VS7 project files.
+** bug-bw/07-Jul-03: check for number format of timer update interval setting
+*** done-bw/Sep..Oct-03
+
+** todo-bw/29-Jul-03: A registry history window which shows changes to
+   values in driver key by other programs.
+*** done-bw/06-Aug-03
+
+** bug-bw/08-Jul-03: Make GUI-Autorestore Thread safe
+*** done-bw/06-Aug-03: An invisible TextBox is used for thread communication (XXX)
+**** done-bw/10-Nov-03: Corrected: Invoke() method is now used.
+
+** todo-bw/25-Jul-03: include command for specfiles
+*** done-bw/27-Jul-03: implemented include, if, elif, else, endif commands.
+
+** todo-2003-06-18: "find target" button like in Explorer short cuts
+   properties to explore folder containing exe
+*** done-bw/07-Jul-03
+
+** todo-bw/22-Jun-03: allow multiple sets of 3D Settings in profiles,
+   automatically choosed by current video card. but we want to keep it
+   simple.
+*** done-bw/??-Jul-03
+
+** todo-bw/23-Jun-03: To process Shell Links we could have a lean
+   C/C++ executable. At least we could make a C# program w/o uneeded
+   functionality (libraries, saving profiles, storing all profiles).
+   That program could be check for non-gui options and start the
+   actual GUI enabled program if needed.
+*** done-bw/???
+
+** todo--bw/27-Jun-03: Do optional waiting for a started game to exit
+   and restore settings to old values.
+*** done-bw/???
+
+** todo-bw/06-Jul-03: Add regval "undefined" for ConfigItem/specfile, to
+   represent a nonexisting value.
+*** done-bw/07-Jul-03
+
+** todo-bw/07-Jul-03: Grouping ComboxBoxes on Extra + Extra2 by 3D-Api
+   could be better, because a lot of options does not exist on both
+   APIs. Currently its grouped by DriverSettings-Group and
+   ProfileSettings-Group
+*** done-bw/07-Jul-03
+
+** bug-bw/07-Jul-03: Adding user defined names breaks support for
+   multiple video cards of course. To fix this, it should just save
+   unknown text between known options along with each option. This way
+   we can preserve user comments too.
+*** done-bw/07-Jul-03: Fix was easy. GammeProfileData.add() just saves
+    options not found in names array to unknown_options as
+    preformatted text ready to print.
+
+*** done-bw/06-Jul-03: AppConfig has not accepted empty option values
+    due to a broken regexp.
+
+*** done-bw/28-Jun-03: Changed enable/disable profiles combo boxes
+    from toggle to left/right click enable/disable. combinine
+    row/column toggles is unusable. Disabling is now fully implemented.
+
+*** done-bw/27-Jun-03: Bug: Using a shell link for a nonexistent
+    profile results in crashing. Now an error message is shown and
+    program quits.
+
+** todo-2003-06-13: if a profile value is unknown just show it as
+    coloured text in combo box (if possible with a dropdown list)
+*** done-bw/26-Jun-03: note: I had to change DropDownStyle for such
+    ComboBoxes while such a text ist showed.
+
+** todo-bw/26-Jun-03: Edit Button for Game .ini/.cfg Files which
+   remembers the file path per Profile.
+*** done--bw/26-Jun-03: note: currently no button, but a menu item.
+
+** todo-bw/25-Jun-03: How to set visible part of text in TextBox? If
+   the text does not fit in the box I would prefer to schow the end of
+   text not the start.
+*** done-bw/26-Jun-03: This seems to work: void f(TextBox textBox) {
+    textBox.SelectionStart = textBox.Text.Length; }
+
+** todo-2003-06-20: add commandline argument to start a profile
+   directly (e.g. tdprof -run "GTA III")
+*** done-bw/21-Jun-03
+
+** todo-2003-06-13: Are there associative arrays in C#/.NET?
+*** done: class Hashtable
+
+** todo-2003-06-15: Allow alternative syntax from windows .reg files
+   like "hex:00,00,00,00" instead type="REG_BINARY" value="00000000"
+*** done
+
+
+* CANCELLED
+
+** todo-bw/27-Jun-03: Allow creating hard-links associated with Shell
+   Shortcuts. Currently a shortcut is a soft-link to a game
+   profile. If the profile will be altered or deleted the shortcut is
+   affected. This is not always the expected behavior. In Radlinker
+   everey Link has its own configuration. Both kind of links are
+   useful.
+*** cancelled-bw/18-Jun-04: The small benefit would not justify
+    complicating the code
+
+** bug-bw/22-Jun-03: Delete button sometimes disabled on a freshly
+   created profile. -bw/25-Jun-03: never happened again so far.
+*** cancelled-bw/26-Jun-03 never happende again and the code for this
+    was replaced anyway
+
+
+* INFO
+
+** nvidia Driver versions
+*** nvidia aniso stage dependent optimizing possible since driver 30.30. No longer in 5x.xx
+
+
+* DESIGN
+
+** specfile language: A GUI editor was planned. Conditional scanning
+   may make this harder to implement.
+
+
+
+Local variables:
+mode: outline
+paragraph-separate: "[ 	]*$"
+end:

@@ -1,0 +1,48 @@
+d:\dev\98ddk\inc\win98\vmm.inc(312) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(312) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(312) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(314) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(315) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(316) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(317) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(318) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(319) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(320) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(321) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(322) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(323) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(324) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(325) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(326) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(503) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(504) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(505) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(506) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(4463) : error A2008: syntax error : EQU
+i386\ioctl.asm(29) : error A2008: syntax error : .mmx
+d:\dev\98ddk\inc\win98\vmm.inc(312) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(312) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(312) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(314) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(315) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(316) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(317) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(318) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(319) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(320) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(321) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(322) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(323) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(324) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(325) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(326) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(503) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(504) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(505) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(506) : error A2214: GROUP directive not allowed with /coff option
+d:\dev\98ddk\inc\win98\vmm.inc(4463) : error A2008: syntax error : EQU
+i386\ioctl.asm(187) : error A2008: syntax error : MM0
+i386\ioctl.asm(188) : error A2008: syntax error : MM1
+i386\ioctl.asm(189) : error A2008: syntax error : [
+i386\ioctl.asm(190) : error A2008: syntax error : [
+i386\ioctl.asm(194) : error A2008: syntax error : emms

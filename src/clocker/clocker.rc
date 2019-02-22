@@ -1,0 +1,289 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\clocker.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\clocker.ico"
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About clocker"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "clocker Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_CLOCKER_DIALOG DIALOGEX 0, 0, 250, 242
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "Clocker"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_LIM_MIN_CORE,30,127,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LIM_MIN_MEM,30,157,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LIM_MAX_CORE,204,127,21,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_LIM_MAX_MEM,204,157,21,14,ES_AUTOHSCROLL
+    LTEXT           "Static",IDC_STATIC_CORE,11,28,25,8
+    LTEXT           "Static",IDC_STATIC_MEM,12,42,25,9
+    PUSHBUTTON      "Get",IDC_BUTTON_GET,90,78,41,14
+    CONTROL         "",IDC_SLIDER_CORE,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,42,21,194,21
+    CONTROL         "",IDC_SLIDER_MEM,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,42,44,193,23
+    PUSHBUTTON      "Set",IDC_BUTTON_SET,134,78,94,14,WS_GROUP
+    GROUPBOX        "MHz Limits and Presets",IDC_STATIC,7,115,236,87
+    EDITTEXT        IDC_EDIT_PRE_SLOW_CORE,64,127,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PRE_SLOW_MEM,64,157,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PRE_NORMAL_CORE,97,127,20,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PRE_NORMAL_MEM,98,157,20,14,ES_AUTOHSCROLL
+    LTEXT           "Chip",IDC_STATIC,13,129,15,8
+    LTEXT           "RAM",IDC_STATIC,13,160,16,8
+    EDITTEXT        IDC_EDIT_PRE_FAST_CORE,131,127,21,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PRE_FAST_MEM,131,157,22,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PRE_ULTRA_CORE,166,127,21,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PRE_ULTRA_MEM,166,157,21,14,ES_AUTOHSCROLL
+    LTEXT           "Min",IDC_STATIC,49,241,15,8
+    LTEXT           "Max",IDC_STATIC,181,241,14,8
+    LTEXT           "Slow",IDC_STATIC,69,241,16,8
+    LTEXT           "Normal",IDC_STATIC,91,241,23,8
+    LTEXT           "Fast",IDC_STATIC,123,241,14,8
+    LTEXT           "Ultra",IDC_STATIC,153,241,16,8
+    PUSHBUTTON      "S",IDC_BUTTON_PRE_SLOW,40,78,10,14
+    PUSHBUTTON      "N",IDC_BUTTON_PRE_NORMAL,50,78,10,14
+    PUSHBUTTON      "F",IDC_BUTTON_PRE_FAST,60,78,10,14
+    PUSHBUTTON      "U",IDC_BUTTON_PRE_ULTRA,70,78,10,14
+    GROUPBOX        "Presets",IDC_STATIC,36,68,48,29
+    LTEXT           "Chip",IDC_STATIC,17,16,15,8
+    LTEXT           "RAM",IDC_STATIC,16,57,16,8
+    PUSHBUTTON      "OK",IDC_BUTTON_PREF_OK,39,176,77,14
+    PUSHBUTTON      "Cancel",IDC_BUTTON_PREF_CANCEL,139,176,75,14
+    LTEXT           "DevID:",IDC_STATIC_DEVID_LABEL,48,215,24,8
+    LTEXT           "8888",IDC_STATIC_DEVID_VALUE,72,215,17,8
+    LTEXT           "VenID:",IDC_STATIC_VENVID_LABEL,48,224,23,8
+    LTEXT           "8888",IDC_STATIC_VENID_VALUE,72,224,15,8
+    LTEXT           "",IDC_STATIC_MESSAGE,16,101,190,8
+    PUSHBUTTON      "Min",IDC_BUTTON_PRE_SET_MIN,30,143,31,13
+    PUSHBUTTON      "Slow",IDC_BUTTON_PRE_SET_SLOW,64,143,30,13
+    PUSHBUTTON      "Normal",IDC_BUTTON_PRE_SET_NORMAL,97,143,31,13
+    PUSHBUTTON      "Fast",IDC_BUTTON_PRE_SET_FAST,131,143,32,13
+    PUSHBUTTON      "Ultra",IDC_BUTTON_PRE_SET_ULTRA,166,143,32,13
+    PUSHBUTTON      "Max",IDC_BUTTON_PRE_SET_MAX,204,143,32,13
+    CONTROL         "",IDC_SPIN_CORE_MAX,"msctls_updown32",UDS_ARROWKEYS,50,
+                    127,11,14
+    CONTROL         "",IDC_SPIN_LIM_MIN_MEM,"msctls_updown32",UDS_ARROWKEYS,
+                    50,157,11,14
+    CONTROL         "",IDC_SPIN_PRE_SLOW_CORE,"msctls_updown32",
+                    UDS_ARROWKEYS,83,127,11,14
+    CONTROL         "",IDC_SPIN_PRE_SLOW_MEM,"msctls_updown32",UDS_ARROWKEYS,
+                    83,157,11,14
+    CONTROL         "",IDC_SPIN_PRE_NORMAL_CORE,"msctls_updown32",
+                    UDS_ARROWKEYS,117,127,11,14
+    CONTROL         "",IDC_SPIN_PRE_NORMAL_MEM,"msctls_updown32",
+                    UDS_ARROWKEYS,117,157,11,14
+    CONTROL         "",IDC_SPIN_PRE_FAST_CORE,"msctls_updown32",
+                    UDS_ARROWKEYS,152,127,11,14
+    CONTROL         "",IDC_SPIN_PRE_FAST_MEM,"msctls_updown32",UDS_ARROWKEYS,
+                    152,157,11,14
+    CONTROL         "",IDC_SPIN_PRE_ULTRA_CORE,"msctls_updown32",
+                    UDS_ARROWKEYS,187,127,11,14
+    CONTROL         "",IDC_SPIN_PRE_ULTRA_MEM,"msctls_updown32",
+                    UDS_ARROWKEYS,187,157,11,14
+    CONTROL         "",IDC_SPIN_LIM_MAX_CORE,"msctls_updown32",UDS_ARROWKEYS,
+                    225,127,11,14
+    CONTROL         "",IDC_SPIN_LIM_MAX_MEM,"msctls_updown32",UDS_ARROWKEYS,
+                    225,157,11,14
+    PUSHBUTTON      "Diagnostic",IDC_BUTTON_DIAG_PRINT,93,216,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "TODO: <Company name>"
+            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "clocker.exe"
+            VALUE "LegalCopyright", "TODO: (c) <Company name>.  All rights reserved."
+            VALUE "OriginalFilename", "clocker.exe"
+            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_CLOCKER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 237
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+IDR_MANIFEST            RT_MANIFEST             "res\\clocker.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "&About clocker..."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\clocker.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

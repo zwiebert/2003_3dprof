@@ -1,0 +1,328 @@
+<html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<head>
+<title>3DProf - Online Manual</title>
+</head>
+
+<body>
+<!--
+-->
+<h2>3DProf Online Manual - Table Of Content</h2>
+<ul>
+  <li><a href="#Clocking">Clocking</a>
+  <ul>
+    <li><a href="#Clocking.Settings">Clocking Preferences</a>
+    <ul>
+      <li><a href="#Clocking.Settings.Limits">Limits</a>
+      <li><a href="#Clocking.Settings.Presets">Presets</a>
+      <li><a href="#Clocking.Settings.Misc">Misc</a>
+    </ul>
+    <li><a href="#Clocking.Controls">Controls</a>
+    <ul>
+      <li><a href="#Clocking.Controls.Current">Current</a>
+      <li><a href="#Clocking.Controls.Profile">Profile</a>
+    </ul>
+  </ul>
+
+
+  <li><a href="#3D">3D Options</a>
+  <ul>
+    <li><a href="#3D.Current">Current</a>
+    <li><a href="#3D.Profile">Profile</a>
+    <li><a href="#3D.Customizing">Customizing</a>
+  </ul>
+
+
+  <li><a href="#Profiles">Profiles</a>
+    <ul>
+    <li><a href="#Profiles.Creating">Creating</a>
+    <li><a href="#Profiles.Saving">Saving</a>
+  </ul>
+
+</ul>
+
+<hr>
+
+<!--
+-->
+
+<a name="Clocking"></a><h1>Clocking</h1>
+
+<p>3DProf can read and set clock on supported video cards
+ hardware. Clocks can be set in different ways:</p>
+ <ul>
+  <li>entering clock numbers directly and hitting Set button</li>
+  <li>saving clock numbers in a profile and applying the saved profile later</li>
+  <li>one can use four predefined presets (Slow, Normal, Fast, Ultra) instead of clock numbers with both direct clocking and profiles</li>
+ </ul>
+
+<a name="Clocking.Settings"></a><h2>Clocking Related Settings</h2>
+<p>The following settings are made to the Settings dialog reachable
+from menu Options | Settings.
+<p><img src="img/en/tdprof_shot_settings_clocking.png"></p>
+
+<a name="Clocking.Settings.Limits"></a><h3>Clock-Limits</h3>
+
+<p>Clock limits are a safety feature. 3DProf will never set a clock
+which is lower or greater than the user-configured minimum or
+maximum.</p>
+
+<p>Please configure the limits by changing the numbers in the boxes
+above and below the <i>Min</i> and <i>Max</i> labels.</p>
+
+<p>Example: You have configured a maximal RAM clock of 350 MHz. A
+profile contains a setting for 380 MHz RAM clock. The RAM will be
+clocked with 350 MHz.</p>
+
+<a name="Clocking.Settings.Presets"></a><h3>Clock-Presets</h3>
+
+<p>The four clock presets <i>Slow</i>, <i>Normal</i>, <i>Fast</i> and
+<i>Ultra</i> can be used in profiles instead of MHz
+numbers. They can also applied directly from the user interface via
+hotkeys, tray-menu and buttons in the main window.
+
+<a name="Clocking.Settings.Misc"></a><h3>Misc</h3>
+
+<p><i>Clock After Game</i>: Here you can chose what clock is used after a
+game has finished. The first item (Previous/Standard) will restore the
+clock to the values before the games or use the clocks provided by the
+default profile (according to Auto Restore configuration). The
+remaining items will cause the clock set to a configured preset after
+the game.</p>
+
+<p><img src="img/en/tdprof_shot_settings_extended.png"></p>
+
+<p><i>Enable Clocking</i>: If unchecked, the clocking features of 3DProf will
+be deactivated. The clocking controls in the main window will be
+hidden.</p
+ 
+<p><i>Experimental: Radeon Smaller Clocksteps</i> allows smaller clock number
+increments on Radeon cards. Most clockers in the past did not change
+the default Reference Divider but only the Feedback Dividers. On most
+Radeons, the clock step using the default Reference Divider is 6.75
+MHz.</p> 
+
+
+<a name="Clocking.Controls"></a><h2>Apply Clocks to Hardware and Profiles</h2>
+<p>The clocking controls can be found on the Clocking tab in the main window</p> 
+
+<p><img src="img/en/tdprof_shot_extra_clock.png"></p>
+
+
+<a name="Clocking.Controls.Current"></a><h3>Changing Current Clocks</h3>
+
+<p>The controls for changing current clocks are located in the group
+Current. This groups can be found on the right hand side in the
+Clocking tab of the main window.</p>
+<p><img src="img/en/tdprof_shot_clock_groupCurr.png"></p>
+
+<h4>Change Clocks by MHz</h4>
+
+<p>Enter the desired clocks using the two sliders. After that hit the
+Set button. Note: If the sliders will not go high or low enough then
+you need to change the <a
+href="#Clocking.Settings.Limits">clock-limits</a> first.)</p>
+
+<h4>Change Clock by Loading a Preset</h4>
+<p>Hit one of the buttons labelled S, N, F or U to load a <a
+href="#Clocking.Settings.Presets">predefined preset</a>. No need to
+hit Set button after that.</p>
+<p>Presets can also be loaded from the tray menu. You can also
+configure a hotkey for each preset in the hotkeys editor</p>
+
+<h4>Resetting the Clock</h4>
+
+<p>This function is currently broken. The Reset button should set the
+default clock of the card, but this does not work, because the clocker
+does not know that clocks.</p>
+
+<h4>Getting Current Clocks</h4>
+
+<p>Current clocks are read from card every time you open the clocking
+tab. If an error occurs, it will be ignored.
+<p>You can also click the Get button to read the current clock from
+the card. If an error occurs, it will be shown.</p>
+
+
+
+<a name="Clocking.Controls.Profile"></a><h3>Setting Profile Clocks</h3>
+<p>The controls for changing profile clocks are located in the group
+Profile. This groups can be found on the left hand side in the
+Clocking tab of the main window.</p>
+<p><img src="img/en/tdprof_shot_clock_groupProf.png"></p>
+
+<p>The clock you define in a profile will be used to clock the card as
+soon as you apply the profile.</p>
+
+<h4>Loading a Preset</h4>
+<p>This is the preffered method to do profile-dependent
+clocking. Choose one of the <a
+href="#Clocking.Settings.Presets">predefined preset</a> from the
+list. </p>
+
+<h4>Entering the Clocks Manually</h4>
+<p>In a new profile, the clocking feature is disabled. If the profile
+is applied, the current clocks remains unchanged.</p>
+
+<p>The clock settings can be enabled, by checking the boxes near the
+sliders in the left side of the window</p>
+
+<p>After that, choose the desired clock speed using the sliders. A hit
+on the Apply button would now set the current clocks according to the
+profile.</p>
+
+<p>Like always, when a profile was changed: Hitting the <a href="#Profiles.Saving">Save button</a>
+will save the changed profiles into the config file. This must be
+done, before starting the profile via a shell shortcut, or the
+shortcut will not notice the change.</p>
+
+<hr>
+<!--
+-->
+
+<a name="3D"></a><h1>3D Options</h1>
+
+<p>3D options controls are located at the 3D tab on the main
+window. Additional (card dependent)controls can be found at Direct3D
+and OpenGL tabs.</P>
+<p><img src="img/en/tdprof_shot_main_group3d.png"></p>
+
+<a name="3D.Current"></a><h2>Changing Current 3D Settings</h2>
+
+<p>To change the anisotropic filter of Direct3D for example, choose a
+value from the list box in row Driver and column Aniso. This change
+will be written to Registry immediatly. This behavior is similar to
+the nVidia tray icon menu.</p>
+
+<a name="3D.Profile"></a><h2>Changing Profile 3D Settings</h2>
+
+<p>To change the profile-preference for the anisotropic filter of Direct3D for example, choose a
+value from the list box in row Profile and column Aniso. This change
+will be written to the Profile immediatly. (But as always, the
+profiles will not saved to disk until Save button is hit).</p>
+
+<a name="3D.Profile.Disabling"></a><h2>Disabling 3D Settings</h2>
+
+<p>Disabling 3D settings can be useful to make for example OpenGL-only
+profiles, or profiles which only do clocking, but leave 3D settings
+alone.</p>
+
+<p>If you don't want for example any OpenGL settings in a profile,
+then disable the entire Profile row of OpenGL by right-clicking on the
+row label (the label named Profile). This will affect all OpenGL
+setting on Main tab an Extra OpenGL tab.</p>
+
+<p>You can disable the Direct3D row the same way. Or you can just
+disable single columns by right-clicking on the column label.
+
+<p>To disable single 3D Options, just right click direct into its
+control box.</p>
+
+<p>To disable all 3D Settings, just do a right-click on Profile labels
+of both D3D and OGL.</p>
+
+<a name="3D.Customizing"></a><h2>Customizing</h2>
+
+<p>3D options are configured in text files located in folders
+<a href="../specfiles/"><code>.\specfiles</code></a> and <a href="../usr-specfiles/"><code>.\usr-specfiles</code></a>. Syntax of
+the files is explained in <a
+href="../specfiles/README.TXT"><code>.\specfiles\README.TXT</code></a>
+and <a
+href="../usr-specfiles/README.TXT"><code>.\usr-specfiles\README.TXT</code></a></p>
+
+
+<hr>
+<!--
+-->
+
+<a name="Profiles"></a><h1>Profiles</h1>
+
+<a name="Profiles.Creating"></a><h2>Creating A Profile</h2>
+
+<p>Click New button.</p>
+<p><img src="img/en/tdprof_shot_main_groupProf.png"></p>
+
+<p>Enter a new name into to the textfield. Then hit OK button.</p>
+<p><img src="img/en/tdprof_shot_main_groupProf_new.png"></p>
+
+<a name="Profiles.Saving"></a><h2>Saving A Profile</h2>
+<p>Every time you make a change to a profile or create a new profile,
+the Save buttons becomes clickable.</p>
+<p><img src="img/en/tdprof_shot_main_groupProf.png"></p>
+
+<p>Until you click on this Save button, changes are only valid for the
+current session of 3DProf. If you click Save, alle profile changes you
+made before will be saved.</p>
+
+<hr>
+<!--
+-->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+</body>
+</html>

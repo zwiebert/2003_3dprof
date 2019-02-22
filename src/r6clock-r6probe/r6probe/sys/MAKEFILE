@@ -1,0 +1,95 @@
+##############################################################################
+# $Id: MAKEFILE,v 1.1.1.1 2002/01/25 22:14:25 VSi Exp $
+#
+# MAKEFILE for Windows NT/2K/XP version of r6probe
+#
+# Use this file to tune make process for your system. Several paths must be
+# set up for compilation to succeed.
+# ----------------------------------------------------------------------------
+# LICENSE
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License (GPL) as published by the
+# Free Software Foundation; either version 2 of the License, or (at your
+# option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# To read the license please visit http://www.gnu.org/copyleft/gpl.html
+# ----------------------------------------------------------------------------
+# $Log: MAKEFILE,v $
+# Revision 1.1.1.1  2002/01/25 22:14:25  VSi
+# Imported to CVS
+#
+# ----------------------------------------------------------------------------
+#                    Copyright (C) 2001-2002 Vahur Sinij„rv
+##############################################################################
+!include ..\..\master.mk
+
+#SICE    = c:\Progra~1\SIW95
+AS      = ml
+LD      = link
+RC      = rc
+TGTNAME = r6probe
+SRCDIR  = d:\source\radeon\probe\sys
+TARGET  = obj\$(TGTNAME).sys
+MAPFILE = obj\$(TGTNAME).map
+SYMFILE = obj\$(TGTNAME).sym
+NMSFILE = obj\$(TGTNAME).nms
+DEFFILE = $(TGTNAME).def
+MAP2SYM = $(SICE)\util16\msym.exe
+NMSYM   = $(SICE)\nmsym.exe
+#LIBPATH = $(NTDDK)\libfre\i386
+# -bw/11-Jul-03: different LIBPATH required by WinXP DDK
+#LIBPATH = $(NTDDK)\src\win_me\block\lib
+#LIBPATH = $(NTDDK)\lib\w2k\i386
+LIBPATH = $(NTDDK)\lib\wxp\i386
+RCINC   = -i.. -i$(NTDDK)\include -i"$(PSDK)\include"
+INCLUDE = -I.. -I..\..\include -I..\..\include\nt
+
+!ifdef DEBUG
+AFLAGS  = -nologo -c -coff -DIS_32 -DMASM6 -DDEBUG -DBLD_COFF -Zd -Zi
+LFLAGS  = -stack:262144,4096 -merge:_page=page -section:init,d -opt:ref -opt:icf -machine:ix86
+LFLAGS  = $(LFLAGS) -ignore:4001,4037,4039,4044,4060,4065,4070,4078,4087,4089,4198
+LFLAGS  = $(LFLAGS) -incremental:no -fullbuild -force:multiple  -map
+LFLAGS  = $(LFLAGS) -nodefaultlib -debug -version:5.00 -osversion:5.00
+LFLAGS  = $(LFLAGS) -driver -align:0x20 -subsystem:native,5.00 -base:0x10000 -entry:DriverEntry
+LFLAGS  = $(LFLAGS) -stub:..\..\stub\stub.exe
+LIBS    = -libpath:$(LIBPATH) ntoskrnl.lib hal.lib wmilib.lib ntvdm.lib
+#RESULT  = $(NMSFILE) #-bw/12-Jul-03: obsolete variable NMSFILE used in DEBUG build?! 
+RESULT  = $(TARGET)
+!else
+#AFLAGS  = -c -coff -DIS_32 -DMASM6 -DBLD_COFF -Fl -Sa -Sn
+AFLAGS  = -nologo -c -coff -DIS_32 -DMASM6 -DBLD_COFF
+LFLAGS  = -stack:262144,4096 -merge:_page=page -section:init,d -opt:ref -opt:icf -machine:ix86
+LFLAGS  = $(LFLAGS) -ignore:4001,4037,4039,4044,4060,4065,4070,4078,4087,4089,4198
+LFLAGS  = $(LFLAGS) -incremental:no -fullbuild -force:multiple -release
+LFLAGS  = $(LFLAGS) -nodefaultlib -debug:none -version:5.00 -osversion:5.00
+LFLAGS  = $(LFLAGS) -driver -align:0x20 -subsystem:native,5.00 -base:0x10000 -entry:DriverEntry
+LFLAGS  = $(LFLAGS) -stub:..\..\stub\stub.exe
+LIBS    = -libpath:$(LIBPATH) ntoskrnl.lib hal.lib wmilib.lib ntvdm.lib
+RESULT  = $(TARGET)
+!endif
+
+OBJ     = obj\main.obj obj\ioctl.obj obj\r6probe.res
+
+.asm{obj}.obj:
+        if not exist obj md obj
+        $(AS) $(AFLAGS) $(INCLUDE) /Fo$@ $<
+
+.rc{obj}.res:
+        $(RC) $(RCINC) -fo$@ $<
+
+all:    $(RESULT)
+
+#$(NMSFILE): $(TARGET)
+#        $(NMSYM) $(TARGET) /TRANS:SOURCE,PACKAGE,ALWAYS /SOURCE:$(SRCDIR)
+
+$(TARGET): $(OBJ)
+        $(LD) $(LFLAGS) $(OBJ) $(LIBS) -out:$(TARGET)
+
+clean:
+        del /Q /F obj\*.*

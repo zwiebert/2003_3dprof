@@ -1,0 +1,375 @@
+/* NVClock 0.7 - FreeBSD overclocker for NVIDIA cards
+ *
+ * Site: http://nvclock.sourceforge.net
+ *
+ * Copyright(C) 2001-2003 Roderick Colenbrander
+ * Portions Copyright(C) 2003 Samy Al Bahra  <samy@kerneled.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+ */
+
+#include <errno.h>
+#include <fcntl.h>
+#include <osreldate.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/linker.h>
+#include <sys/mman.h>
+
+#include "nvclock.h"
+#include "backend.h"
+
+#if __FreeBSD_version < 430000
+#  include <pci/pci_ioctl.h>
+#else
+#  include <sys/pciio.h>
+#endif
+
+
+#define NV_VENDOR 0x10de
+#define VGA 0x03
+#define SIZE 255
+
+struct card_list card[MAX_CARDS];
+Card nv_card;
+
+void set_default_speeds(int num);
+int map_mem(const char *dev_name);
+void unmap_mem();
+void *map_dev_mem (int fd, unsigned long Base, unsigned long Size);
+void unmap_dev_mem (unsigned long Base, unsigned long Size);
+
+
+int FindAllCards()
+{
+  struct pci_conf_io pcidev;
+  struct pci_match_conf patterns;
+  struct pci_conf matches[SIZE];
+  struct pci_io pi;
+  int pcid, counter;
+  
+  if(geteuid()) return -2;
+  
+  if((pcid=open("/dev/pci", O_RDWR))==-1){
+    error(ERROR, "Could not open /dev/pci");
+    return -1;
+  }
+
+  memset(&pcidev,0,sizeof(pcidev));
+  pcidev.pat_buf_len=sizeof(patterns);
+  patterns.pc_vendor=NV_VENDOR;
+  patterns.pc_class=VGA;
+  patterns.flags=PCI_GETCONF_MATCH_VENDOR|PCI_GETCONF_MATCH_CLASS;
+  pcidev.patterns=&patterns;
+  pcidev.num_patterns=1;
+  pcidev.pat_buf_len=sizeof(patterns);
+  pcidev.match_buf_len=sizeof(matches);
+  pcidev.matches=matches;
+  
+  if(ioctl(pcid, PCIOCGETCONF, &pcidev)==-1){
+    error(ERROR, "Could not get configuration of /dev/pci");
+    close(pcid);
+    return -1;
+  }
+    
+  if(pcidev.status==PCI_GETCONF_LIST_CHANGED){
+    error(ERROR, "PCI device list has changed\n");
+    close(pcid);
+    return -1;
+  }
+  else if(pcidev.status==PCI_GETCONF_ERROR){
+    error(ERROR, "General error encountered while trying to get PCI information\n");
+    close(pcid);
+    return -1;
+  }
+  
+  if(!pcidev.num_matches){
+    close(pcid);
+    return -1;
+  }
+  
+  for(counter=0;counter<MAX_CARDS && counter < pcidev.num_matches;counter++){
+    card[counter].device_id=(matches+counter)->pc_device;
+    pi.pi_sel.pc_bus=(matches+counter)->pc_sel.pc_bus;
+    pi.pi_sel.pc_dev=(matches+counter)->pc_sel.pc_dev;
+    pi.pi_sel.pc_func=(matches+counter)->pc_sel.pc_func;
+    pi.pi_reg=0x10;
+    pi.pi_width=sizeof(unsigned int);
+    if(ioctl(pcid, PCIOCREAD, &pi)==-1){
+      error(ERROR, "Could not read data from /dev/pci");
+      close(pcid);
+      return -1;
+    }
+    card[counter].reg_address=pi.pi_data;
+    card[counter].dev_name= "/dev/mem";
+    card[counter].card_name = (char*)get_card_name(card[counter].device_id, &card[counter].gpu);
+
+    card[counter].bus_id = (char*)malloc(8 * sizeof(char));
+    sprintf(card[counter].bus_id, "%02d:%02d.%d", pi.pi_sel.pc_bus,  pi.pi_sel.pc_dev,  pi.pi_sel.pc_func);
+  } 
+  
+  close(pcid);
+  return counter-1;
+}
+
+/* Set the card object to the requested card */
+void set_card(int number)
+{
+    /* Some simple check to see if we are using nv_card for the first time or not */
+    if(nv_card.device_id != 0)
+    {
+	unmap_mem();
+    }
+
+    nv_card.card_name = card[number].card_name;
+    nv_card.device_id = card[number].device_id;
+    nv_card.bus_id = strdup(card[number].bus_id);
+    nv_card.reg_address = card[number].reg_address;
+    nv_card.gpu = card[number].gpu;
+
+    if(map_mem(card[number].dev_name) == -1)
+	return; /* the client will take care of the rest using error ... */
+
+    /* Set the speed range */
+    set_speed_range();
+
+    /* Set the default pll's */
+    nv_card.mpll = card[number].mpll;
+    nv_card.nvpll = card[number].nvpll;
+
+    /* Find out what memory is being used */
+    nv_card.mem_type = (nv_card.PFB[0x200/4] & 0x01) ? DDR : SDR;
+
+    nv_card.get_bus_type = get_bus_type;
+
+    if(strcmp(nv_card.get_bus_type(), "AGP") == 0)
+    {
+	nv_card.get_agp_rate = get_agp_rate;
+	nv_card.get_agp_status = get_agp_status;
+	nv_card.get_fw_status = get_fw_status;
+	nv_card.get_sba_status = get_sba_status;
+	nv_card.get_supported_agp_rates = get_supported_agp_rates;
+    }
+    else
+    {
+	nv_card.get_agp_rate = get_agp_rate;
+	nv_card.get_agp_status = dummy_str;
+	nv_card.get_fw_status = dummy_str;
+	nv_card.get_sba_status = dummy_str;
+	nv_card.get_supported_agp_rates = dummy_str;
+    }
+    
+    
+    nv_card.get_memory_size = get_memory_size;
+    nv_card.get_memory_type = get_memory_type;
+    nv_card.get_memory_width = get_memory_width;
+
+    /* Depending on the gpu type, we provide some functions */
+    /* We do this since we don't want overclocking on all types of cards */
+    switch(card[number].gpu)
+    {
+	case NORMAL:
+	    /* Use different clocking functions for nv30 based cards */
+	    if(((nv_card.device_id & 0xf00) == 0x300))
+	    {
+		error(INFO, "Overclocking of GeforceFX hardware is not supported at the moment");
+    	        nv_card.get_gpu_speed = get_nv30_gpu_speed;
+	        nv_card.get_memory_speed = get_nv30_memory_speed;
+	        nv_card.set_memory_speed = set_nv30_memory_speed;
+	        nv_card.set_gpu_speed = set_nv30_gpu_speed;
+	        nv_card.reset_speeds = reset_speeds;
+	    }
+	    else
+	    {
+    		nv_card.get_gpu_speed = get_gpu_speed;
+	    	nv_card.set_gpu_speed = set_gpu_speed;
+		nv_card.get_memory_speed = get_memory_speed;
+		nv_card.set_memory_speed = set_memory_speed;
+	        nv_card.reset_speeds = reset_speeds;
+	    }
+	    break;
+
+	case NFORCE:
+	    error(INFO, "Memory Overclocking isn't supported on Nforce cards");
+    	    nv_card.get_gpu_speed = get_gpu_speed;
+	    nv_card.set_gpu_speed = set_gpu_speed;
+	    nv_card.get_memory_speed = get_nforce_memory_speed;
+	    nv_card.set_memory_speed = dummy;
+	    nv_card.reset_speeds = reset_speeds;
+	    break;
+
+	case MOBILE:
+	    error(INFO, "Overclocking isn't supported on mobile GPUs");
+    	    nv_card.get_gpu_speed = get_gpu_speed;
+	    nv_card.set_gpu_speed = dummy;
+	    nv_card.get_memory_speed = get_memory_speed;
+	    nv_card.set_memory_speed = dummy;
+	    nv_card.reset_speeds = dummy;
+	    break;
+    }
+}
+
+/*
+    Some new hacky function to add a way to restore
+    the card to its default speeds. Since bios parsing
+    is way too complicated, we fall back to a sort of
+    config file that will hold the speeds till the user
+    reboots.
+*/
+void set_default_speeds(int num)
+{
+    int i, eof;
+    char buffer[100];
+    volatile unsigned int *PEXTDEV;
+    volatile unsigned int *PRAMDAC;
+    FILE *fp;
+
+    if((fp = fopen("/tmp/nvclock", "r")) != NULL)
+    {
+	/* Read the file .. */
+        for(eof = fscanf(fp, "%s",&buffer); eof != EOF; eof = fscanf(fp, "%s", &buffer))
+	{
+	    if( strstr(buffer, "card=") != 0)
+	    {
+		int number, mpll, nvpll;
+		sscanf(buffer, "card=%x", &number);
+	    
+		fscanf(fp, "%s", &buffer);
+		sscanf(buffer, "mpll=%x", &mpll);
+		card[number].mpll = mpll;
+	    
+		fscanf(fp, "%s", &buffer);
+		sscanf(buffer, "nvpll=%x", &nvpll);
+		card[number].nvpll = nvpll;
+	    }
+	    continue;    
+	}
+	fclose(fp);
+    }
+    else
+    {
+	/* Write the config file */
+    	fp = fopen("/tmp/nvclock", "w+");
+	fprintf(fp, "#This file is used by nvclock to be able to restore the card's speeds\n#Do not edit this file!\n");
+    
+	for(i = 0; i <= num; i++)
+	{
+	    int fd;
+	    if( (fd = open(card[i].dev_name, O_RDWR)) == -1 )
+	    {
+		error(ERROR, "Can't open %s", card[i].dev_name);
+		return;
+	    }
+	
+	    /* Only map the registers we need */
+	    PEXTDEV = map_dev_mem(fd, card[i].reg_address + 0x101000, 0xf);
+	    PRAMDAC = map_dev_mem(fd, card[i].reg_address + 0x680500, 0xf);
+
+	    fprintf(fp, "card=%d\n", i);
+	    fprintf(fp, "mpll=%08x\n", PRAMDAC[0x4/4]);
+	    fprintf(fp, "nvpll=%08x\n", PRAMDAC[0x0/4]);
+
+	    card[i].nvpll = PRAMDAC[0x0/4];
+	    card[i].mpll = PRAMDAC[0x4/4];
+	    unmap_dev_mem(card[i].reg_address + 0x101000, 0xf);
+	    unmap_dev_mem(card[i].reg_address + 0x680500, 0xf);
+	}
+	fclose(fp);
+    }
+}
+
+long pciReadLong(short dev, short bus, short function, long offset)
+{
+    int fd;
+    struct pci_io pi;
+    pi.pi_sel.pc_bus = bus;
+    pi.pi_sel.pc_dev = dev;
+    pi.pi_sel.pc_func = function;
+    pi.pi_reg = offset;
+    pi.pi_width = 4;
+
+    if((fd=open("/dev/pci", O_RDWR)) == -1)
+    {
+	error(ERROR, "Could not open /dev/pci");
+	return -1;
+    }
+
+    if(ioctl(fd, PCIOCREAD, &pi) == -1)
+    {
+    	error(ERROR, "Could not read data from /dev/pci");
+	close(fd);
+	return -1;
+    }
+
+    close(fd);	
+    return pi.pi_data;
+}
+
+int map_mem(const char *dev_name)
+{
+    int fd;
+
+    if( (fd = open(dev_name, O_RDWR)) == -1 )
+    {
+	error(ERROR, "Can't open %s", dev_name);
+	return -1;
+    }
+    
+    /* Map the registers of the nVidia chip */
+    nv_card.PEXTDEV = map_dev_mem(fd, nv_card.reg_address + 0x101000, 0x1000);
+    nv_card.PFB     = map_dev_mem(fd, nv_card.reg_address + 0x100000, 0x1000);
+    nv_card.PMC     = map_dev_mem(fd, nv_card.reg_address + 0x000000, 0x2000);
+    nv_card.PRAMDAC = map_dev_mem(fd, nv_card.reg_address + 0x680000, 0x2000);
+    
+    return 0;
+}
+
+void unmap_mem()
+{
+    unmap_dev_mem(nv_card.reg_address + 0x101000, 0x1000);
+    unmap_dev_mem(nv_card.reg_address + 0x100000, 0x1000);
+    unmap_dev_mem(nv_card.reg_address + 0x000000, 0x2000);
+    unmap_dev_mem(nv_card.reg_address + 0x680000, 0x2000);
+}
+
+/* -------- mmap on devices -------- */
+/* This piece of code is from nvtv a linux program for tvout */
+/* The author of nvtv got this from xfree86's os-support/linux/lnx_video.c */
+/* and he modified it a little  */
+
+
+void *map_dev_mem (int fd, unsigned long Base, unsigned long Size)
+{
+    void *base;
+    int mapflags = MAP_SHARED;
+    unsigned long realBase, alignOff;
+
+    realBase = Base & ~(getpagesize() - 1);
+    alignOff = Base - realBase;
+
+    base = mmap((caddr_t)0, Size + alignOff, PROT_READ|PROT_WRITE,
+	mapflags, fd, (off_t)realBase);
+    return (void *) ((char *)base + alignOff);
+}
+
+void unmap_dev_mem (unsigned long Base, unsigned long Size)
+{
+    unsigned long alignOff = Base - (Base & ~(getpagesize() - 1));
+    munmap((caddr_t)(Base - alignOff), (Size + alignOff));
+}

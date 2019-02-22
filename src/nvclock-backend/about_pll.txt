@@ -1,0 +1,30 @@
+Some Info About PLL (-bw/28-Nov-03)
+
+From an ST doc:
+The three dividers used within the PLL are referred to as M
+(predivider), N (feedback divider) and P (postdivider) for
+brevity.
+
+
+bw:
+Schematic:
+ baseclock - XTAL controlled constant clock
+ voltage controlled oscillator (VCO) - genereates variable clockrate
+ phase difference detector (PFD): phase comparator which generates controlling voltage for VCO
+ predivider (M): between baseclock and phase comparator input 1
+ feedback divider (N): between VCO and phase comparator input 2
+ postdivider (P): between VCO output and out-clock (?)
+
+
+ Note that there is a divide-by-2 fixed prescaler before the
+feedback divider.
+
+The binary values applied to the programmable dividers, and the
+frequency of CLOCKIN controls the output frequency of the PLL
+macrocell:
+
+where the values of M, N and P must satisfy the following constraints:
+
+
+Or this:
+http://www.ocfaq.com/forum/showthread.php?threadid=61

@@ -1,0 +1,29 @@
+CC=@CC@
+AR=ar
+RANLIB=@RANLIB@
+system=@system@
+OBJECTS=nv30.o info.o overclock.o
+CFLAGS=
+
+ifeq ($(system), FreeBSD)
+    OBJECTS+=back_bsd.o
+else
+    OBJECTS+=backend.o
+endif
+
+.PHONY: clean distclean
+all: libbackend.a
+
+
+libbackend.a: $(OBJECTS)
+	$(AR) cru libbackend.a $(OBJECTS)
+	$(RANLIB) libbackend.a
+
+clean:
+	rm -f *.o *.a
+
+distclean: clean
+	rm -f Makefile
+
+install:
+uninstall:

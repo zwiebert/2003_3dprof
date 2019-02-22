@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="r6probe-sys"
+	ProjectGUID="{E06E0EF1-E373-4B85-88F5-7348A3AFF69A}"
+	Keyword="MakeFileProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake DEBUG=1 r6probe.sys"
+				ReBuildCommandLine="nmake DEBUG=1 clean_r6probe.sys r6probe.sys"
+				CleanCommandLine="nmake DEBUG=1 clean_r6probe.sys"
+				Output="r6probe.sys"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake r6probe.sys"
+				ReBuildCommandLine="nmake clean_r6probe.sys r6probe.sys"
+				CleanCommandLine="nmake clean_r6probe.sys"
+				Output="r6probe.sys"/>
+		</Configuration>
+		<Configuration
+			Name="Release-WinIO|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake r6probe.sys"
+				ReBuildCommandLine="nmake clean_r6probe.sys r6probe.sys"
+				CleanCommandLine="nmake clean_r6probe.sys"
+				Output="r6probe.sys"/>
+		</Configuration>
+		<Configuration
+			Name="Debug-WinIO|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="nmake DEBUG=1 r6probe.sys"
+				ReBuildCommandLine="nmake DEBUG=1 clean_r6probe.sys r6probe.sys"
+				CleanCommandLine="nmake DEBUG=1 clean_r6probe.sys"
+				Output="r6probe.sys"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
+			<File
+				RelativePath="r6probe\sys\IOCTL.ASM">
+			</File>
+			<File
+				RelativePath="r6probe\sys\MAIN.ASM">
+			</File>
+			<File
+				RelativePath="stub\STUB.ASM">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc">
+			<File
+				RelativePath="r6probe\chiplist.inc">
+			</File>
+			<File
+				RelativePath="include\NT\ctl.inc">
+			</File>
+			<File
+				RelativePath="include\macros.inc">
+			</File>
+			<File
+				RelativePath="include\r6.inc">
+			</File>
+			<File
+				RelativePath="include\r6probe.inc">
+			</File>
+			<File
+				RelativePath="include\r6probe_ioc.h">
+			</File>
+			<File
+				RelativePath="include\r6probe_ioc.inc">
+			</File>
+			<File
+				RelativePath="include\R6REG.INC">
+			</File>
+			<File
+				RelativePath="r6probe\vers.h">
+			</File>
+			<Filter
+				Name="NT"
+				Filter="">
+				<File
+					RelativePath="include\NT\DDK.INC">
+				</File>
+				<File
+					RelativePath="r6probe\sys\DRIVER.INC">
+				</File>
+				<File
+					RelativePath="include\NT\HAL.INC">
+				</File>
+				<File
+					RelativePath="include\NT\NTOSKRNL.INC">
+				</File>
+				<File
+					RelativePath="include\NT\NTSTATUS.INC">
+				</File>
+				<File
+					RelativePath="include\NT\NTVDM.INC">
+				</File>
+				<File
+					RelativePath="include\NT\WMILIB.INC">
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+			<File
+				RelativePath="r6probe\sys\R6PROBE.RC">
+			</File>
+		</Filter>
+		<Filter
+			Name="building"
+			Filter="">
+			<File
+				RelativePath="makefile">
+			</File>
+			<File
+				RelativePath="r6probe\sys\MAKEFILE">
+			</File>
+			<File
+				RelativePath="r6probe\makefile">
+			</File>
+			<File
+				RelativePath="master.mk">
+			</File>
+		</Filter>
+		<File
+			RelativePath="stub\stub.exe">
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

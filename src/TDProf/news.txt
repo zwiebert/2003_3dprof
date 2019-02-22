@@ -1,0 +1,73 @@
+* 2004-10
+
+*** 1.3.82/ATI: Catalyst Control Center support (auto detect). Note: CCC uses unified values for D3D and OGL.
+
+* 2004-08
+
+*** 1.3.77/ATI: Catalyst-4.9 tested; OpenGL: TAA, ATI-CPL controls 
+
+* 2004-05
+
+*** 1.3.50/ATI: TAA (Temporal Antialiasing) support.
+
+* 2004-04
+
+*** 1.3.47/ATI: Catalyst-4.4 support
+*** 1.3.45/ATI: none existing OpenGL=>AF=>nx HQ settings removed in GUI. HQ settings in profiles are mapped to normal (trilinear) Settings.
+
+* 2004-03
+
+*** 1.3.41/Image mounting: Unmounting images after game (autorestore has to be enabled for this to work).
+*** ATI: Catalyst 4.3 support.
+
+* 2004-02
+
+*** ATI: 3DProf is now updating Direct3D-AntiAlias/Aniso controls inside ATI's control panel (Win2K/XP/2003).
+
+* 2004-01
+
+** New Features
+*** Clocking: Clock Presets, accesible from profile, tray menu and hotkeys
+*** Radeon clocking: R6Probe driver updated. It knows almost all
+    Radeons now. If your card was not supported and you have installed
+    previous R6Probe driver, then just install the new one over it.
+**** sorry, the new driver had a bug. It is fixed in version 1.3.4 or later.
+*** GUI now supports Windows XP styles.
+
+** Bugs fixed
+*** Radeon clocking: Less abrupt clocking to avoid screen corruption on very big clock changes. 
+*** Radeon clocking: Wrong clock frequencies on some new radeons.
+
+* 2003-12
+
+** Bugs fixed
+*** You can now run URLs and files without full qualified path as game executables.
+*** When applying a profile with disabled clock settings, default clocks were set instead of keeping the current clock.
+*** nVidia cards not found by nvclock on some systems.
+
+** New Features
+*** System Hotkeys: Hotkeys can be defined to apply+start profiles and control 3DProf functions. See menu Profiles | Hotkeys.
+*** Radeon/NVidia clockers can now load drivers on demand on Win2K/XP admin accounts. No installation/reboot required.
+
+* 2003-11
+
+** Serious Bug Fixed
+*** Because of a misspelled registry key, R6Probe installation only worked, if an old R6Probe registry key from a previous installation was still intact.
+
+** New Features
+*** Added menu item Help=>Intro For New Users
+*** Added menu item Help=>News to read this file
+*** Added absolute registry paths for specfile values (HKLM, HKU, HKCU, HKCC, HKCR prefixes; e.g. "\HKLM\...")
+*** Specfile entries containing only On/Off or Yes/No and optional "unset" are now displayed as check-boxes instead of combo-boxes
+*** Added Help-menu items to visit some project related web pages.
+*** Added menu item Help=>Write Mail to Author.
+
+** New Experimental Features
+*** Added optional icons to menu items of main window. Can be switched off in Options menu.
+
+
+
+Local variables:
+mode: outline
+paragraph-separate: "[ 	]*$"
+end:

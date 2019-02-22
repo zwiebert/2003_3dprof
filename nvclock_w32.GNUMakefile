@@ -1,0 +1,44 @@
+# nonstandard programs used by this Makefile
+devenv=env MAKEFLAGS="" "$$VS7DIR_CYGWIN/Common7/IDE/devenv.com"
+update_website=sitecopy -u tn
+create_zip=/c/bin/7zan a -tzip -bd
+extract_zip=/c/bin/7zan x -tzip -bd
+install=install -p
+
+# distribution names w/o archive suffix
+srcdist=nvclock_w32-src
+
+# local web directory to copy dist archives before updating website
+html_dir=/x/home/bertw/proj/www/tn/html/proj/nvclock_w32/download
+
+files_src:=nvclock_w32.sln nvclock_w32.suo \
+$(shell bash nvclock_w32-extract_sourcefiles.sh)
+
+dll-bindist=nvclock-dll-bindist/Release/nvclock-dll-dist.zip
+bindist=nvclock-bindist/Release/nvclock_w32-bin.zip
+
+bindist $(bindist) : FORCE
+	$(devenv) nvclock_w32.sln /build Release /project nvclock-bindist
+dll-bindist $(dll-bindist) : FORCE
+	$(devenv) nvclock_w32.sln /build Release /project nvclock-dll-bindist
+
+srcdist $(srcdist).zip : $(files_src)
+	-rm -f $(srcdist).zip
+	$(create_zip) $(srcdist).zip $(files_src)
+
+
+srcdist_test : $(srcdist)
+	rm -rf $(srcdist)
+	mkdir $(srcdist) && cd $(srcdist) && $(extract_zip) ../$(srcdist).zip
+
+
+www_local : $(srcdist).zip $(bindist) $(dll-bindist) 
+	$(install) $(srcdist).zip $(html_dir)/$(srcdist).zip
+	$(install) $(bindist) $(html_dir)/
+	$(install) $(dll-bindist) $(html_dir)/
+
+www_remote : www_local
+	$(update_website)
+
+
+FORCE:

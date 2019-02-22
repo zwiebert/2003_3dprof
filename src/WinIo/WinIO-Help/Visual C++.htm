@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<HTML xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<BODY BGCOLOR=#FFFFFF>
+
+<H3>Using WinIo in a Visual C++ application</H3>
+
+<P>
+In order to use WinIo in a Visual C++ application, you should take the following steps:
+<OL>
+<LI>Place winio.dll, winio.vxd and winio.sys in the directory where your application's executable file resides.
+<LI>Add winio.lib to your project file by right clicking on the project name in the
+   Visual C++ workview pane and selecting "Add Files to Project...".
+<LI>Add the #include "winio.h" statement to your source file.
+<LI>Call <B><A HREF="InitializeWinIo.htm">InitializeWinIo</A></B>.
+<LI>Call the library's functions to access I/O ports and physical memory.
+<LI>Call <B><A HREF="ShutdownWinIo.htm">ShutdownWinIo</A></B>.
+</OL>
+</P>
+
+</BODY>
+</HTML>

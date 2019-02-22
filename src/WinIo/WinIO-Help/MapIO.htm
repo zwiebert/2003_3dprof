@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML XMLNS:MSHelp="http://msdn.microsoft.com/mshelp">
+  <META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+  <BODY BGCOLOR="#ffffff">
+    <H3>MapIO</H3>
+    <P>
+      This function maps a region of physical memory into the linear address space of 
+      the application.
+    </P>
+    <SPAN STYLE='BACKGROUND: #e5e5e5'>
+      <FONT SIZE="3">
+        <PRE><B>PVOID _stdcall MapIO(      
+   PVOID winio_handle,     
+   ULONG physical_address, 
+   ULONG size              
+);                               </B></PRE>
+      </FONT>
+    </SPAN>
+    <H4>Parameters</H4>
+    <EM>winio_handle</EM>
+    <BR>
+    [in] Pointer&nbsp;retourned by <B><A HREF="InitializeWinIo.htm">InitializeWinIo</A></B>&nbsp;
+    <BR>
+    <BR>
+    <EM>physical_address</EM>
+    <BR>
+    [in] Pointer to the physical address
+    <BR>
+    <BR>
+    <EM>size</EM>
+    <BR>
+    [in] Number of bytes to map
+    <H4>Return Values</H4>
+    If the function succeeds, the return value is the linear address corresponding 
+    to the physical address that was passed in <I>pbPhysAddr</I>. Otherwise, the 
+    return value is NULL.&nbsp; The result should be used when calling UnMapIO
+    <H4>Remarks</H4>
+    <P>
+      The <B>MapIO</B> function maps a region of physical memory into the linear 
+      address space of the calling application.
+    </P>
+    <P><B>Note:</B> Currently not implemented on Windows 98/ME.
+    </P>
+  </BODY>
+</HTML>

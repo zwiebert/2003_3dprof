@@ -1,0 +1,449 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{807D71BD-4DE2-46BD-B68A-28527C6D57DD}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>tdprof</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TDProf</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Remote Win98 Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug -run Option|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release_Debug|AnyCPU' ">
+    <OutputPath>bin\Release\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug_specfile_option|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug -device_key|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap">
+      <Name>System.Runtime.Serialization.Formatters.Soap</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\MenuImageLib\MenuImageLib.csproj">
+      <Name>MenuImageLib</Name>
+      <Project>{85739E8F-0814-4778-BD9F-4784A0685F90}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.ico" />
+    <EmbeddedResource Include="AppLocale.de.resx" />
+    <EmbeddedResource Include="AppLocale.resx" />
+    <EmbeddedResource Include="Forms\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCommands.de.resx">
+      <DependentUpon>FormCommands.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCommands.resx">
+      <DependentUpon>FormCommands.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormHotkeys.de.resx">
+      <DependentUpon>FormHotkeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormHotkeys.resx">
+      <DependentUpon>FormHotkeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormImageChooser.de.resx">
+      <DependentUpon>FormImageChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormImageChooser.resx">
+      <DependentUpon>FormImageChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIntroMsg.resx">
+      <DependentUpon>FormIntroMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain.de.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMessage.resx">
+      <DependentUpon>FormMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProfileExport.resx">
+      <DependentUpon>FormProfileExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProfileMassEdit.resx">
+      <DependentUpon>FormProfileMassEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRegDiff.de.resx">
+      <DependentUpon>FormRegDiff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRegDiff.resx">
+      <DependentUpon>FormRegDiff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSettings.de.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSettings.resx">
+      <DependentUpon>FormSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSpecFileEdit.de.resx">
+      <DependentUpon>FormSpecFileEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSpecFileEdit.resx">
+      <DependentUpon>FormSpecFileEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="copying.txt" />
+    <Content Include="DevDoc\LogFileSyntax.txt" />
+    <Content Include="manual\all.html" />
+    <Content Include="Misc\tdprof-logs\desktop_on_tv_out.txt" />
+    <Content Include="Misc\tdprof-logs\desktop_on_vga.txt" />
+    <Content Include="Misc\tdprof-logs\dual_view_extended_desktop.txt" />
+    <Content Include="Misc\tdprof-logs\r9700_destop_on_vga.txt" />
+    <Content Include="Misc\tdprof-logs\w2k_mx440_on_vga.txt" />
+    <Content Include="Misc\tdprof-logs\win98se-r9700.txt" />
+    <Content Include="news.txt" />
+    <Content Include="specfiles\README.txt" />
+    <Content Include="TODO.txt" />
+    <Content Include="usr-specfiles\README.txt" />
+    <None Include="license.rtf" />
+    <None Include="Misc\macros.el" />
+    <None Include="post_build.bat" />
+    <None Include="README.rtf" />
+    <None Include="specfiles\ati-r300-win.cfg" />
+    <None Include="specfiles\ati-r300-win4.cfg" />
+    <None Include="specfiles\ati-r300-win5.cfg" />
+    <None Include="specfiles\ati-win4.cfg" />
+    <None Include="specfiles\ati-win5.cfg" />
+    <None Include="specfiles\nvidia-common-win.cfg" />
+    <None Include="specfiles\nvidia-nv17-win.cfg" />
+    <None Include="specfiles\nvidia-nv17-win4.cfg" />
+    <None Include="specfiles\nvidia-nv17-win5.cfg" />
+    <None Include="specfiles\nvidia-nv25-win.cfg" />
+    <None Include="specfiles\nvidia-nv25-win4.cfg" />
+    <None Include="specfiles\nvidia-nv25-win5.cfg" />
+    <None Include="specfiles\nvidia-nv30-win.cfg" />
+    <None Include="specfiles\nvidia-nv30-win4.cfg" />
+    <None Include="specfiles\nvidia-nv30-win5.cfg" />
+    <None Include="specfiles\nvidia-win4.cfg" />
+    <None Include="specfiles\nvidia-win5.cfg" />
+    <None Include="tdprof.exe.manifest" />
+    <None Include="usr-specfiles\1002-9614-win6.cfg" />
+    <Compile Include="Forms\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCommands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormHotkeys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormImageChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIntroMsg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProfileExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProfileMassEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRegDiff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSpecFileEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\App\AppAutoUpdate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\App\AppConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\App\AppEventLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\App\AppHotkeys.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\App\AppLocale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\App\AppMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\App\AppRunProfile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Clocking\Clocking.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Devel\DevScreenShots.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DriverSettings\AutoRestore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DriverSettings\CheckSum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DriverSettings\ConfigRecord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DriverSettings\DisplayInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DriverSettings\RegDiff.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\DriverSettings\SpecFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Hotkeys\SystemHotkey.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Hotkeys\Win32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Profiles\GameProfiles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Profiles\Hotkeys.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Profiles\ImageMounting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Profiles\PrePostCommands.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Profiles\ShellLink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\ShellLink\ShellLinkNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\ShellLink\ShellShortcut.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Utils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Win32\GDI32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Win32\Kernel32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Win32\r6clock-dll.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Win32\User32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Modules\Win32\WinInet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>..\..\TDProf\post_build.bat $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

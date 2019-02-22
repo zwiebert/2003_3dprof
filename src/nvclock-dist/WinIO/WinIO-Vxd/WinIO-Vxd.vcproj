@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="WinIO-Vxd"
+	ProjectGUID="{889DBA1C-F8D8-488E-AE0D-6D10F71A0137}"
+	Keyword="MakeFileProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="build.bat Debug"
+				ReBuildCommandLine="build.bat Debug"
+				CleanCommandLine="clean.bat Debug"
+				Output="WinIO-Vxd.exe"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="build.bat Release"
+				ReBuildCommandLine="build.bat Release"
+				CleanCommandLine="clean.bat Release"
+				Output="WinIO-Vxd.exe"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
+			<File
+				RelativePath="WINIO.DEF">
+			</File>
+			<File
+				RelativePath="WINIO.VRC">
+			</File>
+			<File
+				RelativePath="WINIO.exp">
+			</File>
+			<File
+				RelativePath="WinIo.c">
+			</File>
+			<File
+				RelativePath="WinIo_9x.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc">
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+		</Filter>
+		<File
+			RelativePath="build.bat">
+		</File>
+		<File
+			RelativePath="clean.bat">
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

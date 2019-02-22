@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1252">
+<HTML>
+<BODY BGCOLOR=#FFFFFF>
+
+<H3>Using WinIo from a non-administrative account</H3>
+
+<P>
+WinIo can now be used from non-administrative accounts under Windows NT/2000/XP.
+In order to support this configuration, the WinIo driver (winio.sys) must be first
+installed on the system from an administrative account using the <B><A HREF="InstallWinIoDriver.htm">InstallWinIoDriver</A></B>
+function, which is provided by the library. Following installation, the driver will
+load automatically whenever Windows starts. An application will then be able to use
+the library's functions to access I/O ports and physical memory.
+</P>
+
+<P>
+You should take the following steps in order to use WinIo from a non-administrative account:
+<OL>
+<LI>Place winio.dll, winio.vxd and winio.sys in the directory where your application resides.
+<LI>Log on as an administrator.
+<LI>Call <B><A HREF="InstallWinIoDriver.htm">InstallWinIoDriver</A></B> with the first parameter set to the path of the winio.sys file (e.g. c:\myapp\winio.sys).
+<LI>Reboot the system.
+<LI>Log on as a regular user.
+<LI>You should now be able to use WinIo in the same way as when using the library 
+   from an administrative account.
+<LI>When WinIo is no longer required, call <B><A HREF="RemoveWinIoDriver.htm">RemoveWinIoDriver</A></B>
+to remove the WinIo driver from the system. This must be performed from an administrative account.
+</OL>
+</P>
+
+</BODY>
+</HTML>

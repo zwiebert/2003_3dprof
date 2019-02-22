@@ -1,0 +1,16 @@
+You're correct. Public version of r6probe and all custom drivers based
+upon its' source code totally ignore PLL pos dividers.  Correct clock
+calculation formula for PLL used on RADEON boards is:
+
+clk = 2 * feedback_divider * reference_clk / ( reference_divider * post_divider)
+
+whilst r6probe and its' clones use:
+
+clk = feedback_divider * reference_clk / (reference_divider)
+
+The second formula gives correct result in one and the only case -
+when post divider is set to 2 by default. Happily the most of
+reference ATI BIOS'es generate post_divider = 2 for default clock
+frequencies, so r6probe's clock calculation formula works
+too. However, latest R360/RV360 boards (especially ASUS) tend to set
+post_divider to different value so the formula simply doesn’t work.

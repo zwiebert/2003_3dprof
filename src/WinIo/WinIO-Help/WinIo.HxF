@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE HelpFileList SYSTEM "MS-Help://Hx/Resources/HelpFileList.DTD">
+<HelpFileList DTDVersion="1.0">
+	<File Url="C++ Builder.htm"/>
+    <File Url="GetPhysLong.htm"/>
+    <File Url="GetPortVal.htm"/>
+    <File Url="InitializeWinIo.htm"/>
+    <File Url="InstallWinIoDriver.htm"/>
+    <File Url="Intro.htm"/>
+    <File Url="License.htm"/>
+    <File Url="MapPhysToLin.htm"/>
+    <File Url="nonadmin.htm"/>
+    <File Url="RemoveWinIoDriver.htm"/>
+    <File Url="SetPhysLong.htm"/>
+    <File Url="SetPortVal.htm"/>
+    <File Url="ShutdownWinIo.htm"/>
+    <File Url="Table of Contents.HxT"/>
+    <File Url="UnmapPhysicalMemory.htm"/>
+    <File Url="Visual Basic.htm"/>
+    <File Url="Visual C++.htm"/>
+    <File Url="NamedURLIndex.HxK"/>
+    <File Url="MapIO.htm"/>
+    <File Url="UnMapIO.htm"/>
+    </HelpFileList>

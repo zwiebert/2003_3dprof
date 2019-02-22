@@ -1,0 +1,12 @@
+----------------------------------------------------------------------
+
+Q: When starting TDProf.exe an error message "Program cannot be
+  initialized" occurs.
+
+A: TDProf requires the .NET framework runtime from Microsoft to be
+installed. It can be downloaded for free from Microsoft at
+
+ http://msdn.microsoft.com/downloads/list/netdevframework.asp
+
+----------------------------------------------------------------------
+

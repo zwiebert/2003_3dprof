@@ -1,0 +1,17 @@
+
+* GUI Designer:
+
+** Splitter
+*** The right control ist not splitted, but fills the whole container.
+**** Just use "Bring To Front" in Designer Context menu on the right control
+
+** Group
+*** How to get rid of border?
+**** Just use Panel instead of Group.
+
+
+
+Local variables:
+mode: outline
+paragraph-separate: "[ 	]*$"
+end:
