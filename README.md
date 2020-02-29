@@ -1,5 +1,4 @@
 https://zwiebert.github.io/2003_3dprof/src/TDProf/manual/all.html
-![ScreenShot](img/de)
 ![ScreenShot](img/nvclock_log.png)
 ![ScreenShot](img/r6pdm.png)
 ![ScreenShot](img/tdprof_menu_help.png)
